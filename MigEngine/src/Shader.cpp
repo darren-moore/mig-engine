@@ -3,33 +3,9 @@
 
 using namespace std;
 
-Shader::Shader(char const* vertexPath, char const* fragmentPath) {
-	string vertString;
-	string fragString;
+Shader::Shader(std::string const &vertString, std::string const &fragString) {
 	int  shaderSuccess;
 	char shaderInfoLog[512];
-
-
-	try {
-		std::fstream file(vertexPath);
-		std::stringstream buffer;
-		buffer << file.rdbuf();
-		vertString = buffer.str();
-		file.close();
-	}
-	catch (fstream::failure e) {
-		cout << "ERROR::SHADER::VERTEX::FILE_NOT_SUCCESFULLY_READ" << endl;
-	}
-	try {
-		std::fstream file(fragmentPath);
-		std::stringstream buffer;
-		buffer << file.rdbuf();
-		fragString = buffer.str();
-		file.close();
-	}
-	catch (fstream::failure e) {
-		cout << "ERROR::SHADER::FRAGMENT::FILE_NOT_SUCCESFULLY_READ" << endl;
-	}
 
 	const char* vertexShaderSource = vertString.c_str();
 	const char* fragmentShaderSource = fragString.c_str();

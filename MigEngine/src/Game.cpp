@@ -1,7 +1,5 @@
 #include "Game.h"
 
-// BaseIOEngine is the only one that touches GLFW stuff. It could be swapped with SDL for instance.
-// WindowEngine gets 
 // PhysicsEngine includes rigid body, soft body, and fluid computations.
 // ParticleEngine
 // TextEngine
@@ -9,48 +7,52 @@
 // GUI Engine
 
 Game::Game(GLuint windowWidth, GLuint windowHeight) {
-	ioEngine.init();
-	Locator::provide(ioEngine);
+	ioEngine_.init();
+	Locator::provide(ioEngine_);
 
-	renderEngine.init();
-	Locator::provide(renderEngine);
+	resourceEngine_.init();
+	Locator::provide(resourceEngine_);
+
+	renderEngine_.init();
+	Locator::provide(renderEngine_);
 }
 
 // Shutdown sub-engines in inverse start-order.
 void Game::stop() {
-	renderEngine.stop();
-	ioEngine.stop();
+	renderEngine_.stop();
+	resourceEngine_.stop();
+	ioEngine_.stop();
 }
 
 void Game::start() {
 	float lastFrameTime = 0;
-	renderEngine.setClearColor(0, 0, 0, 1);
+	renderEngine_.setClearColor(0, 0, 0, 1);
 	while (true) {
-		if (ioEngine.shouldClose()) {
+		if (ioEngine_.shouldClose()) {
 			stop();
 			break;
 		}
 
-		float currentFrameTime = ioEngine.getCurrentWindowTime();
-		dt = currentFrameTime - lastFrameTime;
+		float currentFrameTime = ioEngine_.getCurrentWindowTime();
+		dt_ = currentFrameTime - lastFrameTime;
 		lastFrameTime = currentFrameTime;
 
-		ioEngine.processInput();
-		this->update(dt);
-		renderEngine.clear();
+		ioEngine_.processInput();
+		this->update(dt_);
+		renderEngine_.clear();
 		this->render();
-		ioEngine.swapBuffers();
+		ioEngine_.swapBuffers();
 	}
 
 }
 
 
 void Game::addGameObject(GameObject *gameObject) {
-	gameObjects.push_back(gameObject);
+	gameObjects_.push_back(gameObject);
 }
 
 void Game::update(float const dt) {
-	for (auto &go : gameObjects) {
+	for (auto &go : gameObjects_) {
 		if (go->active) {
 			go->update(dt);
 		}
@@ -60,7 +62,7 @@ void Game::update(float const dt) {
 }
 
 void Game::render() {
-	for (auto &go : gameObjects) {
+	for (auto &go : gameObjects_) {
 		if (go->spriteRenderer != NULL) {
 			go->spriteRenderer->draw(glm::vec2(go->transform.position[0],go->transform.position[1]), glm::vec2(100,100), 0);
 		}

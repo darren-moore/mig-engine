@@ -14,11 +14,4 @@ public:
 	void run();
 	void clear();
 	void setClearColor(float r, float g, float b, float a);
-
-private:
-	// Window resize callback for dynamic viewport
-	void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-	void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
-
-
 };

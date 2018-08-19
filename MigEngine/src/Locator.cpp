@@ -2,3 +2,4 @@
 
 IOEngine Locator::ioEngine_;
 RenderEngine Locator::renderEngine_;
+ResourceEngine Locator::resourceEngine_;

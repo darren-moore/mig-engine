@@ -5,11 +5,11 @@
 
 class Renderer : public GameObjectComponent{
 public:
-	Renderer(Shader &shader) : shader(shader) {};
+	Renderer(Shader &shader) : shader_(shader) {};
 	~Renderer() {};
 
 protected:
-	GLuint VAO;
-	Shader shader;
+	GLuint VAO_;
+	Shader shader_;
 
 };

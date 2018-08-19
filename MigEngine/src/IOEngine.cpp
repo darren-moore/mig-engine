@@ -39,14 +39,14 @@ int IOEngine::createWindow(int width, int height) {
 	return 0;
 }
 
-void IOEngine::bindInput(const char* inputName, int button) {
+void IOEngine::bindInput(const std::string& inputName, int button) {
 	inputMap_[inputName] = button;
 }
-void IOEngine::unbindInput(const char* inputName) {
+void IOEngine::unbindInput(const std::string& inputName) {
 	inputMap_.erase(inputName);
 }
 
-bool IOEngine::isDown(const char* inputName) {
+bool IOEngine::isDown(const std::string& inputName) {
 	int keyCode = inputMap_[inputName];
 	// TODO: some error handling.
 	if (IOEngine::keys[keyCode])
@@ -56,9 +56,9 @@ bool IOEngine::isDown(const char* inputName) {
 }
 
 void IOEngine::stop() {
-	//for (auto& input : inputMap_) {
-	//	unbindInput()
-	//}
+	for (auto& input : inputMap_) {
+		unbindInput(input.first);
+	}
 	glfwTerminate();
 }
 

@@ -6,13 +6,13 @@
 
 using namespace glm;
 
-SpriteRenderer::SpriteRenderer(Shader &shader) : Renderer(shader), shader(shader) {
+SpriteRenderer::SpriteRenderer(Shader &shader) : Renderer(shader), shader_(shader) {
 	initRenderData();
 
 }
 
 void SpriteRenderer::draw(glm::vec2 position, glm::vec2 size, GLfloat rotation) {
-	this->shader.use();
+	this->shader_.use();
 	mat4 model = mat4(1.0);
 
 	model = translate(model, vec3(position, 0.0f));
@@ -25,11 +25,11 @@ void SpriteRenderer::draw(glm::vec2 position, glm::vec2 size, GLfloat rotation) 
 	model = scale(model, vec3(size, 1.0f));
 
 	glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
-	this->shader.setMat4("projection", projection);
-	this->shader.setMat4("model", model);
-	this->shader.setVec3("shaderColor", vec3(.3, .2, .5));
+	this->shader_.setMat4("projection", projection);
+	this->shader_.setMat4("model", model);
+	this->shader_.setVec3("shaderColor", vec3(.3, .2, .5));
 
-	glBindVertexArray(this->VAO);
+	glBindVertexArray(this->VAO_);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
 }
@@ -59,13 +59,13 @@ void SpriteRenderer::initRenderData() {
 		1.0f, 0.0f,
 	};
 
-	glGenVertexArrays(1, &this->VAO);
+	glGenVertexArrays(1, &this->VAO_);
 	glGenBuffers(1, &VBO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glBindVertexArray(this->VAO);
+	glBindVertexArray(this->VAO_);
 
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);

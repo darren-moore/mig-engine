@@ -13,4 +13,3 @@ int main() {
 	// Run the game!
 	myGame.start();
 }
-

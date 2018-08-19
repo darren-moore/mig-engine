@@ -9,7 +9,7 @@ public:
 	void draw(glm::vec2 position, glm::vec2 size = glm::vec2(1, 1), GLfloat rotation = 0.0f);
 
 private:
-	Shader shader;
+	Shader shader_;
 
 	void initRenderData();
 };

@@ -25,5 +25,4 @@ public:
 	}
 
 	virtual void update(float const dt) {};
-	// Drawing is always done. Change the shader if you want to fix that...
 };

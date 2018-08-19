@@ -13,12 +13,13 @@ public:
 	void stop();
 	bool shouldClose();
 	float getCurrentWindowTime();
-	void bindInput(const char* inputName, int button);
-	void unbindInput(const char* inputName);
-	bool isDown(const char* inputName);
+	void bindInput(const std::string& inputName, int button);
+	void unbindInput(const std::string& inputName);
+	bool isDown(const std::string& inputName);
 	void swapBuffers();
 	void processInput();
 	int createWindow(int width, int height);
+
 private:
 	GLFWwindow* window_;
 	std::map<std::string, int> inputMap_;
