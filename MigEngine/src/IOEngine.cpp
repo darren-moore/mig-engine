@@ -1,9 +1,12 @@
 #include "IOEngine.h"
 
 bool IOEngine::keys[1024];
+int IOEngine::windowWidth_ = 0;
+int IOEngine::windowHeight_ = 0;
 
-void IOEngine::init() {
-	createWindow(800, 600);
+
+void IOEngine::init(int windowWidth, int windowHeight) {
+	createWindow(windowWidth, windowHeight);
 }
 
 void IOEngine::processInput() {
@@ -33,9 +36,12 @@ int IOEngine::createWindow(int width, int height) {
 		return -1;
 	}
 
+	windowWidth_ = width;
+	windowHeight_ = height;
 	glViewport(0, 0, width, height);
 	glfwSetFramebufferSizeCallback(window_, framebuffer_size_callback);
 	glfwSetKeyCallback(window_, key_callback);
+
 	return 0;
 }
 
@@ -70,12 +76,22 @@ float IOEngine::getCurrentWindowTime() {
 	return glfwGetTime();
 }
 
+int IOEngine::getWindowWidth() {
+	return windowWidth_;
+}
+int IOEngine::getWindowHeight() {
+	return windowHeight_;
+}
+
+
 void IOEngine::swapBuffers() {
 	glfwSwapBuffers(window_); // double buffer!
 }
 
 
 void IOEngine::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+	IOEngine::windowWidth_ = width;
+	IOEngine::windowHeight_ = height;
 	glViewport(0, 0, width, height);
 }
 

@@ -8,7 +8,7 @@ using namespace glm;
 
 SpriteRenderer::SpriteRenderer(Shader &shader) : Renderer(shader), shader_(shader) {
 	initRenderData();
-
+	ioEngine_ = Locator::getIOEngine();
 }
 
 void SpriteRenderer::draw(glm::vec2 position, glm::vec2 size, GLfloat rotation) {
@@ -24,7 +24,7 @@ void SpriteRenderer::draw(glm::vec2 position, glm::vec2 size, GLfloat rotation) 
 
 	model = scale(model, vec3(size, 1.0f));
 
-	glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
+	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_.getWindowWidth(), (float)ioEngine_.getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	this->shader_.setMat4("projection", projection);
 	this->shader_.setMat4("model", model);
 	this->shader_.setVec3("shaderColor", vec3(.3, .2, .5));

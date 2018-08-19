@@ -14,4 +14,7 @@ public:
 	void run();
 	void clear();
 	void setClearColor(float r, float g, float b, float a);
+private:
+	int targetWidth_;
+	int targetHeight_;
 };

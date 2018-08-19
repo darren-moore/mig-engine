@@ -15,7 +15,7 @@
 class Game {
 
 public:
-	Game(GLuint windowWidth, GLuint windowHeight);
+	Game(GLuint windowWidth = 800, GLuint windowHeight = 600);
 	~Game() {}
 	void stop();
 	void start();

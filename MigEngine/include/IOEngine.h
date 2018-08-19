@@ -9,7 +9,7 @@
 // We use GLFW.
 class IOEngine {
 public:
-	void init();
+	void init(int windowWidth, int windowHeight);
 	void stop();
 	bool shouldClose();
 	float getCurrentWindowTime();
@@ -20,9 +20,16 @@ public:
 	void processInput();
 	int createWindow(int width, int height);
 
+	int getWindowWidth();
+	int getWindowHeight();
+
+
 private:
 	GLFWwindow* window_;
 	std::map<std::string, int> inputMap_;
+
+	static int windowWidth_;
+	static int windowHeight_;
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 	static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mode);
 	static bool keys[1024];	// A GLFW key table.

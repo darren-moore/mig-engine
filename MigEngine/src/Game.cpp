@@ -7,7 +7,7 @@
 // GUI Engine
 
 Game::Game(GLuint windowWidth, GLuint windowHeight) {
-	ioEngine_.init();
+	ioEngine_.init(windowWidth, windowHeight);
 	Locator::provide(ioEngine_);
 
 	resourceEngine_.init();

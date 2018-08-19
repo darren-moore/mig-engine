@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Renderer.h"
+#include "IOEngine.h"
 
 class SpriteRenderer : Renderer {
 public:
@@ -10,6 +11,6 @@ public:
 
 private:
 	Shader shader_;
-
+	IOEngine ioEngine_;
 	void initRenderData();
 };
