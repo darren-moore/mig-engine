@@ -7,12 +7,12 @@
 class Locator {
 public:
 
-	static IOEngine getIOEngine() { return ioEngine_; }
+	static IOEngine& getIOEngine() { return ioEngine_; }
 	static void provide(IOEngine& ioEngine) {
 		ioEngine_ = ioEngine;
 	}
 
-	static RenderEngine getRenderEngine() { return renderEngine_; }
+	static RenderEngine& getRenderEngine() { return renderEngine_; }
 	static void provide(RenderEngine& RenderEngine) {
 		renderEngine_ = renderEngine_;
 	}

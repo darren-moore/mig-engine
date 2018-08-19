@@ -36,11 +36,29 @@ int IOEngine::createWindow(int width, int height) {
 	glViewport(0, 0, width, height);
 	glfwSetFramebufferSizeCallback(window_, framebuffer_size_callback);
 	glfwSetKeyCallback(window_, key_callback);
-
 	return 0;
 }
 
+void IOEngine::bindInput(const char* inputName, int button) {
+	inputMap_[inputName] = button;
+}
+void IOEngine::unbindInput(const char* inputName) {
+	inputMap_.erase(inputName);
+}
+
+bool IOEngine::isDown(const char* inputName) {
+	int keyCode = inputMap_[inputName];
+	// TODO: some error handling.
+	if (IOEngine::keys[keyCode])
+		return true;
+	else
+		return false;
+}
+
 void IOEngine::stop() {
+	//for (auto& input : inputMap_) {
+	//	unbindInput()
+	//}
 	glfwTerminate();
 }
 

@@ -7,9 +7,10 @@ int main() {
 
 	Game myGame(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	GameObject* go = new Tank();
+	Tank* go = new Tank();
 	myGame.addGameObject(go);
 
 	// Run the game!
 	myGame.start();
 }
+

@@ -107,7 +107,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\mooda\Documents\glm-0.9.9-a2;C:\Users\mooda\Documents\Visual Studio 2017\Projects\MigEngine\MigEngine\include;C:\Users\mooda\Downloads\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb;C:\Users\mooda\Documents\glfw-3.2.1.bin.WIN32\include;C:\Users\mooda\Documents\glad\include;$(IncludePath)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mooda\Documents\glm-0.9.9-a2;C:\Users\mooda\Documents\mig-engine\MigEngine\include;C:\Users\mooda\Downloads\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb;C:\Users\mooda\Documents\glfw-3.2.1.bin.WIN32\include;C:\Users\mooda\Documents\glad\include;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Users\mooda\Documents\glfw-3.2.1.bin.WIN32\lib-vc2015</AdditionalLibraryDirectories>

@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <Eigen/Dense>
 
+#include "Locator.h"
+#include "IOEngine.h"
 #include "Transform.h"
 #include "SpriteRenderer.h"
 
@@ -11,7 +13,7 @@
 class GameObject {
 public:
 	Transform transform;
-	bool active;
+	bool active = true;
 
 	SpriteRenderer* spriteRenderer;
 

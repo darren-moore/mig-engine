@@ -24,7 +24,7 @@ void Game::stop() {
 
 void Game::start() {
 	float lastFrameTime = 0;
-
+	renderEngine.setClearColor(0, 0, 0, 1);
 	while (true) {
 		if (ioEngine.shouldClose()) {
 			stop();
@@ -37,6 +37,7 @@ void Game::start() {
 
 		ioEngine.processInput();
 		this->update(dt);
+		renderEngine.clear();
 		this->render();
 		ioEngine.swapBuffers();
 	}
@@ -61,7 +62,7 @@ void Game::update(float const dt) {
 void Game::render() {
 	for (auto &go : gameObjects) {
 		if (go->spriteRenderer != NULL) {
-			go->spriteRenderer->draw(glm::vec2(100,100), glm::vec2(100,100), 0);
+			go->spriteRenderer->draw(glm::vec2(go->transform.position[0],go->transform.position[1]), glm::vec2(100,100), 0);
 		}
 	}
 }
