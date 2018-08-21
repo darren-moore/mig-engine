@@ -6,26 +6,22 @@
 
 // An implementation of the Service Locator pattern.
 // Simply provide the sub-engines and  get them.
+
+
 class Locator {
 public:
 
-	static IOEngine& getIOEngine() { return ioEngine_; }
-	static void provide(IOEngine& ioEngine) {
-		ioEngine_ = ioEngine;
-	}
+	static IOEngine* getIOEngine() { return ioEngine_; }
+	static void provide(IOEngine* ioEngine) { ioEngine_ = ioEngine; }
 
-	static RenderEngine& getRenderEngine() { return renderEngine_; }
-	static void provide(RenderEngine& renderEngine) {
-		renderEngine_ = renderEngine;
-	}
+	static RenderEngine* getRenderEngine() { return renderEngine_; }
+	static void provide(RenderEngine* renderEngine) { renderEngine_ = renderEngine; }
 
-	static ResourceEngine& getResourceEngine() { return resourceEngine_; }
-	static void provide(ResourceEngine& resourceEngine) {
-		resourceEngine_ = resourceEngine;
-	}
+	static ResourceEngine* getResourceEngine() { return resourceEngine_; }
+	static void provide(ResourceEngine* resourceEngine) { resourceEngine_ = resourceEngine; }
 
 private:
-	static IOEngine ioEngine_;
-	static RenderEngine renderEngine_;
-	static ResourceEngine resourceEngine_;
+	static IOEngine* ioEngine_;
+	static RenderEngine* renderEngine_;
+	static ResourceEngine* resourceEngine_;
 };

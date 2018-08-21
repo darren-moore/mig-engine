@@ -1,15 +1,16 @@
 #pragma once
 
 #include "GameObjectComponent.h"
-#include "Shader.h"
+#include "RenderEngine.h"
 
-class Renderer : public GameObjectComponent{
+class Renderer : public GameObjectComponent {
 public:
-	Renderer(Shader &shader) : shader_(shader) {};
-	~Renderer() {};
+	Renderer();
+	Renderer(Shader* shader);
+	virtual ~Renderer() {};
 
 protected:
+	RenderEngine* renderEngine_;
 	GLuint VAO_;
-	Shader shader_;
-
+	Shader* shader_;
 };

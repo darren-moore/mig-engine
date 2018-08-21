@@ -6,13 +6,17 @@
 
 using namespace glm;
 
-SpriteRenderer::SpriteRenderer(Shader &shader) : Renderer(shader), shader_(shader) {
+SpriteRenderer::SpriteRenderer() : Renderer() {
 	initRenderData();
 	ioEngine_ = Locator::getIOEngine();
 }
 
+SpriteRenderer::SpriteRenderer(Shader* shader) : Renderer(shader) {
+	SpriteRenderer();
+}
+
 void SpriteRenderer::draw(glm::vec2 position, glm::vec2 size, GLfloat rotation) {
-	this->shader_.use();
+	this->shader_->use();
 	mat4 model = mat4(1.0);
 
 	model = translate(model, vec3(position, 0.0f));
@@ -24,12 +28,12 @@ void SpriteRenderer::draw(glm::vec2 position, glm::vec2 size, GLfloat rotation) 
 
 	model = scale(model, vec3(size, 1.0f));
 
-	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_.getWindowWidth(), (float)ioEngine_.getWindowHeight(), 0.0f, -1.0f, 1.0f);
-	this->shader_.setMat4("projection", projection);
-	this->shader_.setMat4("model", model);
-	this->shader_.setVec3("shaderColor", vec3(.3, .2, .5));
+	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	this->shader_->setMat4("projection", projection);
+	this->shader_->setMat4("model", model);
+	this->shader_->setVec3("shaderColor", vec3(.3, .2, .5));
 
-	glBindVertexArray(this->VAO_);
+	glBindVertexArray(VAO_);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
 }

@@ -36,9 +36,6 @@
     <ClInclude Include="include\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer.cpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -59,18 +56,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\FragShader.frag">
+    <None Include="src\defaultVertShader.vert">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="src\VertShader.vert">
+    <None Include="src\defaultFragShader.frag">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\RenderEngine.cpp">
@@ -80,9 +74,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SpriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Locator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\IOEngine.cpp">
@@ -101,6 +92,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ResourceEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Locator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

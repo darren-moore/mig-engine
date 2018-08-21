@@ -32,19 +32,18 @@
     <ClInclude Include="include\Texture.h" />
     <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\IOEngine.h" />
-    <ClInclude Include="src\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\FragShader.frag" />
-    <None Include="src\VertShader.vert" />
+    <None Include="src\defaultFragShader.frag" />
+    <None Include="src\defaultVertShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\src\glad.c" />
     <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
-    <ClCompile Include="src\Locator.cpp" />
     <ClCompile Include="example\main.cpp" />
+    <ClCompile Include="src\Locator.cpp" />
     <ClCompile Include="src\RenderEngine.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\ResourceEngine.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />

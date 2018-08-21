@@ -1,6 +1,7 @@
 #pragma once
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Shader.h"
 #include <iostream>
 
 // The Render Engine's job is to push pixels onto the buffer.
@@ -11,7 +12,9 @@ public:
 
 	void init();
 	void stop();
-	void run();
+
+	void setShader(Shader shader);
+
 	void clear();
 	void setClearColor(float r, float g, float b, float a);
 private:

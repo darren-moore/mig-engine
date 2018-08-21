@@ -9,8 +9,8 @@ void RenderEngine::stop() {
 
 }
 
-void RenderEngine::run() {
-
+void RenderEngine::setShader(Shader shader) {
+	glUseProgram(shader.ID);
 }
 
 void RenderEngine::setClearColor(float r, float g, float b, float a) {

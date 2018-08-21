@@ -1,5 +1,9 @@
 #include "ResourceEngine.h"
 
+void ResourceEngine::init() {
+	addShader("src/defaultVertShader.vert", "src/defaultFragShader.frag", "defaultShader");
+}
+
 std::string ResourceEngine::getFile(const std::string& filePath) {
 	std::string fileContents;
 
@@ -22,14 +26,14 @@ void ResourceEngine::addShader(const std::string& vertShaderFilePath, const std:
 	shaderMap_[shaderName] = shader;
 }
 
-Shader& ResourceEngine::getShader(const std::string& shaderName) {
-	return *shaderMap_[shaderName];
+Shader* ResourceEngine::getShader(const std::string& shaderName) {
+	return shaderMap_[shaderName];
 };
 
 void ResourceEngine::addTexture(const std::string& filePath, const std::string& textureName) {
 
 }
 
-Texture& ResourceEngine::getTexture(const std::string& textureName) {
-	return *textureMap_[textureName];
+Texture* ResourceEngine::getTexture(const std::string& textureName) {
+	return textureMap_[textureName];
 }

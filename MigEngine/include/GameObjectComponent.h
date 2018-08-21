@@ -3,5 +3,5 @@
 
 class GameObjectComponent {
 protected:
-	bool active;
+	bool active = true;
 };

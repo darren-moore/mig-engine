@@ -62,9 +62,6 @@ bool IOEngine::isDown(const std::string& inputName) {
 }
 
 void IOEngine::stop() {
-	for (auto& input : inputMap_) {
-		unbindInput(input.first);
-	}
 	glfwTerminate();
 }
 

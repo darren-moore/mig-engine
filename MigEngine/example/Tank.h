@@ -13,6 +13,6 @@ public:
 	void update(float const dt);
 	float speed = .5;
 private:
-	IOEngine ioEngine_;
+	IOEngine* ioEngine_;
 	ResourceEngine resourceEngine_;
 };
