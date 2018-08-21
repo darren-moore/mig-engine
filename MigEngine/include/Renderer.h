@@ -1,9 +1,9 @@
 #pragma once
 
-#include "GameObjectComponent.h"
+#include "Component.h"
 #include "RenderEngine.h"
 
-class Renderer : public GameObjectComponent {
+class Renderer : public Component {
 public:
 	Renderer();
 	Renderer(Shader* shader);

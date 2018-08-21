@@ -1,7 +1,7 @@
 #include "Renderer.h"
 
 Renderer::Renderer() {
-	shader_ = Locator::getResourceEngine()->getShader("defaultShader");
+	shader_ = Locator::getResourceEngine()->getShader("defaultSpriteShader");
 	renderEngine_ = Locator::getRenderEngine();
 }
 

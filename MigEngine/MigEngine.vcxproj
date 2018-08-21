@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameObject.h" />
-    <ClInclude Include="include\GameObjectComponent.h" />
+    <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\Locator.h" />
     <ClInclude Include="include\RenderEngine.h" />
     <ClInclude Include="include\Renderer.h" />
@@ -29,12 +29,15 @@
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\SpriteRenderer.h" />
     <ClInclude Include="example\Tank.h" />
+    <ClInclude Include="include\stb_image.h" />
     <ClInclude Include="include\Texture.h" />
     <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\IOEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\defaultFragShader.frag" />
+    <None Include="src\defaultPrimitiveFragShader.frag" />
+    <None Include="src\defaultPrimitiveVertShader.vert" />
     <None Include="src\defaultVertShader.vert" />
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,8 @@ public:
 	void init();
 	void stop();
 
+	void drawRectangle(float x1, float y1, float x2, float y2);
+
 	void setShader(Shader shader);
 
 	void clear();

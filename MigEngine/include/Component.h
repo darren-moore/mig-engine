@@ -1,7 +1,7 @@
 #pragma once
 #include "Locator.h"
 
-class GameObjectComponent {
+class Component {
 protected:
 	bool active = true;
 };

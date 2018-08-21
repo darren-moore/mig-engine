@@ -3,6 +3,8 @@
 Tank::Tank() {
 	
 	spriteRenderer = new SpriteRenderer();
+	Locator::getResourceEngine()->addTexture("src/face.png", "face");
+	spriteRenderer->setTexture(Locator::getResourceEngine()->getTexture("face"));
 	transform.position = Eigen::Vector2f(100, 100);
 	transform.scale = Eigen::Vector2f(100, 100);
 

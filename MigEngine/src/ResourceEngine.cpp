@@ -1,7 +1,10 @@
 #include "ResourceEngine.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 void ResourceEngine::init() {
-	addShader("src/defaultVertShader.vert", "src/defaultFragShader.frag", "defaultShader");
+	addShader("src/defaultVertShader.vert", "src/defaultFragShader.frag", "defaultSpriteShader");
+	addShader("src/defaultPrimitiveVertShader.vert", "src/defaultPrimitiveFragShader.frag", "defaultPrimitiveShader");
 }
 
 std::string ResourceEngine::getFile(const std::string& filePath) {
@@ -31,7 +34,11 @@ Shader* ResourceEngine::getShader(const std::string& shaderName) {
 };
 
 void ResourceEngine::addTexture(const std::string& filePath, const std::string& textureName) {
-
+	int width, height, nrChannels;
+	unsigned char* data = stbi_load(filePath.c_str(), &width, &height, &nrChannels, 0);
+	Texture* texture = new Texture(data, width, height, nrChannels);
+	textureMap_[textureName] = texture;
+	stbi_image_free(data);
 }
 
 Texture* ResourceEngine::getTexture(const std::string& textureName) {

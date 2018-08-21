@@ -27,9 +27,6 @@
     <ClInclude Include="include\Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\GameObjectComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\SpriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,6 +51,12 @@
     <ClInclude Include="include\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\defaultVertShader.vert">
@@ -62,6 +65,8 @@
     <None Include="src\defaultFragShader.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="src\defaultPrimitiveVertShader.vert" />
+    <None Include="src\defaultPrimitiveFragShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp">
