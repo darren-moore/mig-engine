@@ -23,6 +23,7 @@
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\Locator.h" />
+    <ClInclude Include="include\PrimitiveRenderer.h" />
     <ClInclude Include="include\RenderEngine.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\ResourceEngine.h" />
@@ -45,6 +46,7 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="example\main.cpp" />
     <ClCompile Include="src\Locator.cpp" />
+    <ClCompile Include="src\PrimitiveRenderer.cpp" />
     <ClCompile Include="src\RenderEngine.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\ResourceEngine.cpp" />

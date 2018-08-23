@@ -11,6 +11,7 @@ public:
 	Tank();
 	~Tank();
 	void update(float const dt);
+	void draw();
 	float speed = .5;
 private:
 	IOEngine* ioEngine_;

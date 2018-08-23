@@ -63,8 +63,6 @@ void Game::update(float const dt) {
 
 void Game::render() {
 	for (auto &go : gameObjects_) {
-		if (go->spriteRenderer != NULL) {
-			go->spriteRenderer->draw(glm::vec2(go->transform.position[0],go->transform.position[1]), glm::vec2(100,100), 0);
-		}
+		go->draw();
 	}
 }

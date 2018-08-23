@@ -8,6 +8,7 @@
 #include "IOEngine.h"
 #include "Transform.h"
 #include "SpriteRenderer.h"
+#include "PrimitiveRenderer.h"
 
 
 class GameObject {
@@ -16,13 +17,17 @@ public:
 	bool active = true;
 
 	SpriteRenderer* spriteRenderer;
+	PrimitiveRenderer* primitiveRenderer;
 
 	GameObject(Eigen::Vector2f position = Eigen::Vector2f::Zero()) {
 		spriteRenderer = NULL;
+		primitiveRenderer = NULL;
 	}
 	~GameObject() {
 		delete spriteRenderer;
+		delete primitiveRenderer;
 	}
 
 	virtual void update(float const dt) {};
+	virtual void draw() {};
 };

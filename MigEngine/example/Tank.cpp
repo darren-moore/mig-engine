@@ -5,6 +5,9 @@ Tank::Tank() {
 	spriteRenderer = new SpriteRenderer();
 	Locator::getResourceEngine()->addTexture("src/face.png", "face");
 	spriteRenderer->setTexture(Locator::getResourceEngine()->getTexture("face"));
+
+	primitiveRenderer = new PrimitiveRenderer();
+
 	transform.position = Eigen::Vector2f(100, 100);
 	transform.scale = Eigen::Vector2f(100, 100);
 
@@ -24,6 +27,9 @@ Tank::~Tank() {
 }
 
 void Tank::update(float const dt) {
+
+	primitiveRenderer->drawRectangle(0, 0, 100, 100);
+
 	if (ioEngine_->isDown("UP")) {
 		transform.position[1] = transform.position[1] - speed;
 	}
@@ -39,3 +45,12 @@ void Tank::update(float const dt) {
 }
 
 
+
+void Tank::draw() {
+	if (spriteRenderer != NULL) {
+		spriteRenderer->draw(glm::vec2(transform.position[0], transform.position[1]), glm::vec2(100, 100), 0);
+	}
+	if (primitiveRenderer != NULL) {
+		primitiveRenderer->drawRectangle(100, 100, transform.position[0], transform.position[1]);
+	}
+}
