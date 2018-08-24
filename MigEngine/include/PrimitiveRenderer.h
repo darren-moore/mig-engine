@@ -19,4 +19,4 @@ private:
 	void initCircleData(int nSides);
 	void initRectangleData();
 	int circleNumSides_ = 32;
-};
+}; 
