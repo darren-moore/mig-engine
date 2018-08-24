@@ -15,5 +15,6 @@ public:
 private:
 	Texture* texture_;
 	IOEngine* ioEngine_;
+	GLuint VAO_;
 	void initRenderData();
 };

@@ -52,5 +52,6 @@ void Tank::draw() {
 	}
 	if (primitiveRenderer != NULL) {
 		primitiveRenderer->drawRectangle(100, 100, transform.position[0], transform.position[1]);
+		primitiveRenderer->drawCircle(250, 250, 100);
 	}
 }

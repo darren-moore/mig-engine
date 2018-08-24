@@ -11,6 +11,6 @@ public:
 
 protected:
 	RenderEngine* renderEngine_;
-	GLuint VAO_;
+	//GLuint VAO_;
 	Shader* shader_;
 };
