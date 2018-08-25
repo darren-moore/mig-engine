@@ -11,12 +11,30 @@ using namespace glm;
 PrimitiveRenderer::PrimitiveRenderer() : Renderer() {
 	shader_ = Locator::getResourceEngine()->getShader("defaultPrimitiveShader");
 	initRectangleData();
+	initLineData();
 	initCircleData(circleNumSides_);
 	ioEngine_ = Locator::getIOEngine();
 }
 
 PrimitiveRenderer::PrimitiveRenderer(Shader* shader) : Renderer(shader) {
 	PrimitiveRenderer();
+}
+
+void PrimitiveRenderer::drawLine(float x1, float y1, float x2, float y2) {
+	shader_->use();
+	mat4 model = mat4(1.0);
+
+	model = translate(model, vec3(x1, y1, 0.0f));
+	model = scale(model, vec3(x2 - x1, y2 - y1, 1.0f));
+
+	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	shader_->setMat4("projection", projection);
+	shader_->setMat4("model", model);
+	shader_->setVec3("inColor", vec3(.1, .3, 1));
+
+	glBindVertexArray(lineVAO_);
+	glDrawArrays(GL_LINES, 0, 2);
+	glBindVertexArray(0);
 }
 
 void PrimitiveRenderer::drawRectangle(float x1, float y1, float x2, float y2) {
@@ -115,6 +133,28 @@ void PrimitiveRenderer::initRectangleData() {
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(rectVertices), rectVertices, GL_STATIC_DRAW);
 	
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GL_FLOAT), (void*)0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+}
+
+void PrimitiveRenderer::initLineData() {
+	glGenVertexArrays(1, &lineVAO_);
+	glBindVertexArray(lineVAO_);
+
+	GLfloat lineVertices[] = {
+		// Pos
+		0.0f, 0.0f,
+		1.0f, 1.0f,
+	};
+
+	GLuint VBO;
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(lineVertices), lineVertices, GL_STATIC_DRAW);
+
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GL_FLOAT), (void*)0);
 
