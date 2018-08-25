@@ -63,6 +63,9 @@
     <ClInclude Include="example\Ball.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="example\Paddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\defaultVertShader.vert">
@@ -115,6 +118,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="example\Ball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="example\Paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
