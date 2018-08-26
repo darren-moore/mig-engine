@@ -70,20 +70,11 @@ void Shader::setFloat(std::string const &name, float value) const {
 	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
 
-//void Shader::setVec3(std::string const &name, Eigen::Vector3f value) const {
-//	glUniform3f(glGetUniformLocation(ID, name.c_str()), value.x, value.y, value.z);
-//}
-//
-//
-//void Shader::setMat4(std::string const &name, Eigen::Matrix4f value) const {
-//	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, value.data());	// Eigen defaults to column-major matrix storage
-//}
-
-void Shader::setVec3(std::string const &name, glm::vec3 value) const {
-	glUniform3f(glGetUniformLocation(ID, name.c_str()), value.x, value.y, value.z);
+void Shader::setVec3(std::string const &name, const Eigen::Vector3f& value) const {
+	glUniform3f(glGetUniformLocation(ID, name.c_str()), value(0), value(1), value(2));
 }
 
 
-void Shader::setMat4(std::string const &name, glm::mat4 value) const {
-	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+void Shader::setMat4(std::string const &name, const Eigen::Matrix4f& value) const {
+	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, value.data());	// Eigen defaults to column-major matrix storage
 }

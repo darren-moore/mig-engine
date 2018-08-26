@@ -1,12 +1,11 @@
 #include "PrimitiveRenderer.h"
+#include <Eigen/Dense>
+#include "LAutils.h"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
+#define _USE_MATH_DEFINES
 #include <math.h>
-#define PI 3.14159265
-using namespace glm;
+
+using namespace Eigen;
 
 PrimitiveRenderer::PrimitiveRenderer() : Renderer() {
 	shader_ = Locator::getResourceEngine()->getShader("defaultPrimitiveShader");
@@ -22,15 +21,14 @@ PrimitiveRenderer::PrimitiveRenderer(Shader* shader) : Renderer(shader) {
 
 void PrimitiveRenderer::drawLine(float x1, float y1, float x2, float y2) {
 	shader_->use();
-	mat4 model = mat4(1.0);
+	Matrix4f model = Matrix4f::Identity();
+	model = eTranslate(model, Vector3f(x1, y1, 0.0f));
+	model = eScale(model, Vector3f(x2 - x1, y2 - y1, 1.0f));
 
-	model = translate(model, vec3(x1, y1, 0.0f));
-	model = scale(model, vec3(x2 - x1, y2 - y1, 1.0f));
-
-	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	shader_->setMat4("projection", projection);
 	shader_->setMat4("model", model);
-	shader_->setVec3("inColor", vec3(.1, .3, 1));
+	shader_->setVec3("inColor", Vector3f(.1f, .3f, 1));
 
 	glBindVertexArray(lineVAO_);
 	glDrawArrays(GL_LINES, 0, 2);
@@ -39,15 +37,15 @@ void PrimitiveRenderer::drawLine(float x1, float y1, float x2, float y2) {
 
 void PrimitiveRenderer::drawRectangle(float x1, float y1, float x2, float y2) {
 	shader_->use();
-	mat4 model = mat4(1.0);
+	Matrix4f model = Matrix4f::Identity();
 
-	model = translate(model, vec3(x1, y1, 0.0f));
-	model = scale(model, vec3(x2 - x1, y2 - y1, 1.0f));
+	model = eTranslate(model, Vector3f(x1, y1, 0.0f));
+	model = eScale(model, Vector3f(x2 - x1, y2 - y1, 1.0f));
 
-	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	shader_->setMat4("projection", projection);
 	shader_->setMat4("model", model);
-	shader_->setVec3("inColor", vec3(.1, .3, 1));
+	shader_->setVec3("inColor", Eigen::Vector3f(.1f, .3f, 1));
 
 	glBindVertexArray(rectangleVAO_);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -56,15 +54,14 @@ void PrimitiveRenderer::drawRectangle(float x1, float y1, float x2, float y2) {
 
 void PrimitiveRenderer::drawCircle(float x, float y, float r) {
 	shader_->use();
-	mat4 model = mat4(1.0);
+	Matrix4f model = Matrix4f::Identity();
+	model = eTranslate(model, Vector3f(x, y, 0.0f));
+	model = eScale(model, Vector3f(r, r, 1.0f));
 
-	model = translate(model, vec3(x, y, 0.0f));
-	model = scale(model, vec3(r, r, 1.0f));
-
-	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	shader_->setMat4("projection", projection);
 	shader_->setMat4("model", model);
-	shader_->setVec3("inColor", vec3(.1, 3, .1));
+	shader_->setVec3("inColor", Eigen::Vector3f(.1f, .3f, .1f));
 
 	glBindVertexArray(circleVAO_);
 	glDrawElements(GL_TRIANGLES, 3*(circleNumSides_+1), GL_UNSIGNED_INT, 0);
@@ -86,8 +83,8 @@ void PrimitiveRenderer::initCircleData(int nSides) {
 	circleVertices[1] = 0;
 	for (int i = 0; i <= nSides; i++) {
 		int x_i = (i + 1) * 2;
-		circleVertices[x_i] = cos(2*PI*i/nSides);
-		circleVertices[x_i + 1] = sin(2*PI*i/ nSides);
+		circleVertices[x_i] = cos(2*(float)M_PI*i/nSides);
+		circleVertices[x_i + 1] = sin(2*(float)M_PI*i/nSides);
 	}
 
 	GLuint VBO;

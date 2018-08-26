@@ -9,8 +9,8 @@ int main() {
 
 	Game myGame(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	// Tank* go = new Tank();
-	// myGame.addGameObject(go);
+	 Tank* go = new Tank();
+	 myGame.addGameObject(go);
 
 	{
 		Ball* ball = new Ball();

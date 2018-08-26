@@ -1,10 +1,8 @@
 
 #include "SpriteRenderer.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "LAutils.h"
 
-using namespace glm;
+using namespace Eigen;
 
 SpriteRenderer::SpriteRenderer() : Renderer() {
 	shader_ = Locator::getResourceEngine()->getShader("defaultSpriteShader");
@@ -20,23 +18,23 @@ void SpriteRenderer::setTexture(Texture* texture) {
 	texture_ = texture;
 }
 
-void SpriteRenderer::draw(glm::vec2 position, glm::vec2 size, GLfloat rotation) {
+void SpriteRenderer::draw(Eigen::Vector2f position, Eigen::Vector2f size, float rotation) {
 	this->shader_->use();
-	mat4 model = mat4(1.0);
+	Matrix4f model = Matrix4f::Identity();
 
-	model = translate(model, vec3(position, 0.0f));
+	model = eTranslate(model, Vector3f(position.x(), position.y(),0.0f));
 
 	// Rotate about centre.
-	model = translate(model, vec3(vec2(0.5*texture_->width, 0.5*texture_->height), 0.0f));
-	model = rotate(model, rotation, vec3(0.0f, 0.0f, 1.0f));
-	model = translate(model, vec3(vec2(-0.5*texture_->width, -0.5*texture_->height), 0.0f));
+	model = eTranslate(model, Vector3f(0.5*texture_->width, 0.5*texture_->height, 0.0f));
+	model = eRotate(model, rotation, Vector3f(0.0f, 0.0f, 1.0f));
+	model = eTranslate(model, Vector3f(-0.5*texture_->width, -0.5*texture_->height, 0.0f));
 
-	model = scale(model, vec3(size, 1.0f));
+	model = eScale(model, Vector3f(size.x(), size.y(), 1.0));
 
-	glm::mat4 projection = glm::ortho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	this->shader_->setMat4("projection", projection);
 	this->shader_->setMat4("model", model);
-	this->shader_->setVec3("spriteColor", vec3(1, 1, 1));
+	this->shader_->setVec3("spriteColor", Eigen::Vector3f(1, 1, 1));
 
 	glActiveTexture(GL_TEXTURE0);
 	texture_->bind();

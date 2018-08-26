@@ -10,7 +10,7 @@ public:
 	~SpriteRenderer() {};
 
 	void setTexture(Texture* texture);
-	void draw(glm::vec2 position, glm::vec2 size = glm::vec2(1, 1), GLfloat rotation = 0.0f);
+	void draw(Eigen::Vector2f position, Eigen::Vector2f size = Eigen::Vector2f(1, 1), float rotation = 0.0f);
 
 private:
 	Texture* texture_;

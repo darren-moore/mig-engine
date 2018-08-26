@@ -1,4 +1,7 @@
 #include "Tank.h"
+#include <Eigen/Dense>
+
+using namespace Eigen;
 
 Tank::Tank() {
 	
@@ -8,8 +11,8 @@ Tank::Tank() {
 
 	primitiveRenderer = new PrimitiveRenderer();
 
-	transform.position = Eigen::Vector2f(100, 100);
-	transform.scale = Eigen::Vector2f(100, 100);
+	transform.position = Vector2f(100, 100);
+	transform.scale = Vector2f(100, 100);
 
 	ioEngine_ = Locator::getIOEngine();
 	ioEngine_->bindInput("UP", GLFW_KEY_W);
@@ -48,10 +51,10 @@ void Tank::update(float const dt) {
 
 void Tank::draw() {
 	if (spriteRenderer != NULL) {
-		spriteRenderer->draw(glm::vec2(transform.position[0], transform.position[1]), glm::vec2(100, 100), 0);
+		spriteRenderer->draw(Vector2f(transform.position.x(), transform.position.y()), Vector2f(100, 100), 3.14/4);
 	}
 	if (primitiveRenderer != NULL) {
-		primitiveRenderer->drawLine(100, 100, transform.position[0], transform.position[1]);
+		primitiveRenderer->drawLine(100, 100, transform.position.x(), transform.position.y());
 		primitiveRenderer->drawCircle(250, 250, 100);
 	}
 }
