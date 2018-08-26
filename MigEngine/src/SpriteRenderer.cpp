@@ -18,16 +18,16 @@ void SpriteRenderer::setTexture(Texture* texture) {
 	texture_ = texture;
 }
 
-void SpriteRenderer::draw(Eigen::Vector2f position, Eigen::Vector2f size, float rotation) {
+void SpriteRenderer::draw(const Eigen::Vector2f& position, const Eigen::Vector2f& size, float rotation) {
 	this->shader_->use();
 	Matrix4f model = Matrix4f::Identity();
 
 	model = eTranslate(model, Vector3f(position.x(), position.y(),0.0f));
 
 	// Rotate about centre.
-	model = eTranslate(model, Vector3f(0.5*texture_->width, 0.5*texture_->height, 0.0f));
+	model = eTranslate(model, Vector3f(0.5f*texture_->width, 0.5f*texture_->height, 0.0f));
 	model = eRotate(model, rotation, Vector3f(0.0f, 0.0f, 1.0f));
-	model = eTranslate(model, Vector3f(-0.5*texture_->width, -0.5*texture_->height, 0.0f));
+	model = eTranslate(model, Vector3f(-0.5f*texture_->width, -0.5f*texture_->height, 0.0f));
 
 	model = eScale(model, Vector3f(size.x(), size.y(), 1.0));
 

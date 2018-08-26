@@ -15,6 +15,6 @@ void Paddle::update(float const dt) {
 }
 
 void Paddle::draw() {
-	primitiveRenderer->drawRectangle(transform.position[0], transform.position[1], transform.position[0] + 10, transform.position[1] + 50);
+	primitiveRenderer->drawRectangle(transform.position[0], transform.position[1], transform.position[0] + 30, transform.position[1] + 90);
 }
 

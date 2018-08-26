@@ -1,5 +1,5 @@
 #include "Tank.h"
-#include <Eigen/Dense>
+#include <Eigen/Core>
 
 using namespace Eigen;
 

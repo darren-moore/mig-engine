@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Eigen/Dense>
+#include <Eigen/Core>
 
 #include "Locator.h"
 #include "IOEngine.h"
@@ -13,7 +13,7 @@
 
 class GameObject {
 public:
-	Transform transform;
+	gTransform transform;
 	bool active = true;
 
 	SpriteRenderer* spriteRenderer;

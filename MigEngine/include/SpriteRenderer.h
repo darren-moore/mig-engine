@@ -10,7 +10,7 @@ public:
 	~SpriteRenderer() {};
 
 	void setTexture(Texture* texture);
-	void draw(Eigen::Vector2f position, Eigen::Vector2f size = Eigen::Vector2f(1, 1), float rotation = 0.0f);
+	void draw(const Eigen::Vector2f& position, const Eigen::Vector2f& size = Eigen::Vector2f(1, 1), float rotation = 0.0f);
 
 private:
 	Texture* texture_;

@@ -69,6 +69,9 @@
     <ClInclude Include="include\LAutils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\collisionUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\defaultVertShader.vert">
@@ -127,6 +130,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\LAutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\collisionUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

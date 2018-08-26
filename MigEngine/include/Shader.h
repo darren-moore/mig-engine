@@ -1,7 +1,7 @@
 #pragma once
 
 #include <glad/glad.h>
-#include <Eigen/Dense>
+#include <Eigen/Core>
 
 #include <iostream>
 #include <string> 

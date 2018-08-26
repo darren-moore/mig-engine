@@ -1,5 +1,5 @@
 #include "PrimitiveRenderer.h"
-#include <Eigen/Dense>
+#include <Eigen/Core>
 #include "LAutils.h"
 
 #define _USE_MATH_DEFINES

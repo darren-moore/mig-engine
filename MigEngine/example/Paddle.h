@@ -7,7 +7,7 @@ public:
 	Paddle();
 	void update(float const dt);
 	void draw();
-	float speed = 30;
+	float speed = 150;
 	std::string paddleUp;
 	std::string paddleDown;
 private:
