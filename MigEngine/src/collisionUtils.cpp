@@ -37,10 +37,11 @@ bool circleRectangleCollision(const Eigen::Vector2f& b1, const Eigen::Vector2f& 
 	Vector2f p2 = b2; p2.x() = b1.x();
 	Vector2f p3 = b2; p3.y() = b1.y();
 	Vector2f p4 = b2;
-	return(
-		circleLineSegmentCollision(p1, p2, c, r) ||
-		circleLineSegmentCollision(p1, p3, c, r) ||
-		circleLineSegmentCollision(p4, p2, c, r) ||
-		circleLineSegmentCollision(p4, p3, c, r));
+	bool hitEdges = circleLineSegmentCollision(p1, p2, c, r) ||
+					circleLineSegmentCollision(p1, p3, c, r) ||
+					circleLineSegmentCollision(p4, p2, c, r) ||
+					circleLineSegmentCollision(p4, p3, c, r);
+	bool insideRect = (c.x() > b1.x() && c.x() < b2.x()) && (c.y() > b1.y() && c.y() < b2.y());
 
+	return(hitEdges || insideRect);
 }

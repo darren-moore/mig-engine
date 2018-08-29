@@ -2,30 +2,36 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Eigen/Core>
+#include <Eigen/Dense>
 
 #include "Locator.h"
 #include "IOEngine.h"
 #include "Transform.h"
-#include "SpriteRenderer.h"
+#include "Texture.h"
 #include "PrimitiveRenderer.h"
+#include "BoxCollider.h"
+#include <vector>
 
 
 class GameObject {
 public:
 	gTransform transform;
 	bool active = true;
+	std::vector<Component> components;
 
-	SpriteRenderer* spriteRenderer;
+	Texture* texture;
 	PrimitiveRenderer* primitiveRenderer;
+	BoxCollider* boxCollider;
 
 	GameObject(Eigen::Vector2f position = Eigen::Vector2f::Zero()) {
-		spriteRenderer = NULL;
+		texture = NULL;
 		primitiveRenderer = NULL;
+		boxCollider = NULL;
 	}
 	~GameObject() {
-		delete spriteRenderer;
+		delete texture;
 		delete primitiveRenderer;
+		delete boxCollider;
 	}
 
 	virtual void update(float const dt) {};

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Eigen/Core>
+#include <Eigen/Dense>
 
 class gTransform {
 public:

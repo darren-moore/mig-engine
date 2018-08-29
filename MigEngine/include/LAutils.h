@@ -1,5 +1,5 @@
 #pragma once
-#include <Eigen/Core>
+#include <Eigen/Dense>
 #include <math.h>
 
 Eigen::Matrix4f eTranslate(const Eigen::Matrix4f& M, const Eigen::Vector3f& v);

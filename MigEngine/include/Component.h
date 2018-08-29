@@ -2,6 +2,6 @@
 #include "Locator.h"
 
 class Component {
-protected:
+public:
 	bool active = true;
 };

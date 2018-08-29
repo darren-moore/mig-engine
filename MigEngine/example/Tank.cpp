@@ -1,13 +1,12 @@
 #include "Tank.h"
-#include <Eigen/Core>
+#include <Eigen/Dense>
 
 using namespace Eigen;
 
 Tank::Tank() {
 	
-	spriteRenderer = new SpriteRenderer();
 	Locator::getResourceEngine()->addTexture("src/face.png", "face");
-	spriteRenderer->setTexture(Locator::getResourceEngine()->getTexture("face"));
+	texture = Locator::getResourceEngine()->getTexture("face");
 
 	primitiveRenderer = new PrimitiveRenderer();
 
@@ -22,7 +21,7 @@ Tank::Tank() {
 }
 
 Tank::~Tank() {
-	delete spriteRenderer;
+	delete texture;
 	ioEngine_->unbindInput("UP");
 	ioEngine_->unbindInput("DOWN");
 	ioEngine_->unbindInput("LEFT");
@@ -50,9 +49,9 @@ void Tank::update(float const dt) {
 
 
 void Tank::draw() {
-	if (spriteRenderer != NULL) {
-		spriteRenderer->draw(Vector2f(transform.position.x(), transform.position.y()), Vector2f(100, 100), 3.14/4);
-	}
+	//if (spriteRenderer != NULL) {
+	//	spriteRenderer->draw(Vector2f(transform.position.x(), transform.position.y()), Vector2f(100, 100), 3.14/4);
+	//}
 	if (primitiveRenderer != NULL) {
 		primitiveRenderer->drawLine(100, 100, transform.position.x(), transform.position.y());
 		primitiveRenderer->drawCircle(250, 250, 100);

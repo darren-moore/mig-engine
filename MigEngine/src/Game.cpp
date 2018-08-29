@@ -63,6 +63,8 @@ void Game::update(float const dt) {
 
 void Game::render() {
 	for (auto &go : gameObjects_) {
-		go->draw();
+		if (go->texture != NULL) {
+			renderEngine_.drawTexture(go->texture, go->transform.position, Eigen::Vector2f(100, 100), 3.14 / 4);
+		}
 	}
 }

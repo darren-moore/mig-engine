@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="example\Ball.h" />
     <ClInclude Include="example\Paddle.h" />
+    <ClInclude Include="include\BoxCollider.h" />
     <ClInclude Include="include\collisionUtils.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\GameObject.h" />
@@ -32,7 +33,6 @@
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\ResourceEngine.h" />
     <ClInclude Include="include\Shader.h" />
-    <ClInclude Include="include\SpriteRenderer.h" />
     <ClInclude Include="example\Tank.h" />
     <ClInclude Include="include\stb_image.h" />
     <ClInclude Include="include\Texture.h" />
@@ -49,6 +49,7 @@
     <ClCompile Include="..\..\glad\src\glad.c" />
     <ClCompile Include="example\Ball.cpp" />
     <ClCompile Include="example\Paddle.cpp" />
+    <ClCompile Include="src\BoxCollider.cpp" />
     <ClCompile Include="src\collisionUtils.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="example\main.cpp" />
@@ -59,7 +60,6 @@
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\ResourceEngine.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="example\Tank.cpp" />
     <ClCompile Include="src\IOEngine.cpp" />
     <ClCompile Include="src\Texture.cpp" />

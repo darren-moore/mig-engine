@@ -1,7 +1,9 @@
 #include "Paddle.h"
 
-Paddle::Paddle() {
+Paddle::Paddle(float width, float height) : width(width), height(height) {
 	primitiveRenderer = new PrimitiveRenderer();
+	boxCollider = new BoxCollider();
+	boxCollider->scale = Eigen::Vector2f(width, height);
 	ioEngine_ = Locator::getIOEngine();
 }
 
@@ -15,6 +17,6 @@ void Paddle::update(float const dt) {
 }
 
 void Paddle::draw() {
-	primitiveRenderer->drawRectangle(transform.position[0], transform.position[1], transform.position[0] + 30, transform.position[1] + 90);
+	primitiveRenderer->drawRectangle(transform.position[0] - width/2, transform.position[1] - height/2, transform.position[0] + width/2, transform.position[1] + height/2);
 }
 
