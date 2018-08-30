@@ -21,10 +21,10 @@
   <ItemGroup>
     <ClInclude Include="example\Ball.h" />
     <ClInclude Include="example\Paddle.h" />
-    <ClInclude Include="include\BoxCollider.h" />
     <ClInclude Include="include\collisionUtils.h" />
+    <ClInclude Include="include\Components.h" />
     <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\GameObject.h" />
+    <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\LAutils.h" />
     <ClInclude Include="include\Locator.h" />
@@ -35,8 +35,9 @@
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="example\Tank.h" />
     <ClInclude Include="include\stb_image.h" />
+    <ClInclude Include="include\System.h" />
+    <ClInclude Include="include\Systems.h" />
     <ClInclude Include="include\Texture.h" />
-    <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\IOEngine.h" />
   </ItemGroup>
   <ItemGroup>
@@ -49,7 +50,6 @@
     <ClCompile Include="..\..\glad\src\glad.c" />
     <ClCompile Include="example\Ball.cpp" />
     <ClCompile Include="example\Paddle.cpp" />
-    <ClCompile Include="src\BoxCollider.cpp" />
     <ClCompile Include="src\collisionUtils.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="example\main.cpp" />

@@ -5,7 +5,9 @@
 #include "ResourceEngine.h"
 
 #include "Locator.h"
-#include "GameObject.h"
+#include "Entity.h"
+#include "Component.h"
+#include "System.h"
 #include <vector>
 
 class Game {
@@ -16,14 +18,15 @@ public:
 	void stop();
 	void start();
 	void update(float const dt);
-	void render();
-	void addGameObject(GameObject *gameObject);
+	void addEntity(Entity* entity);
+	void addSystem(System* system);
 	float getDt() { return dt_; }
 
 private:
-	std::vector<GameObject*> gameObjects_;
+	std::vector<Entity*> entities_;
+	std::vector<System*> systems_;
+	ResourceEngine resourceEngine_;
 	RenderEngine renderEngine_;
 	IOEngine ioEngine_;
-	ResourceEngine resourceEngine_;
 	float dt_ = 0;
 };

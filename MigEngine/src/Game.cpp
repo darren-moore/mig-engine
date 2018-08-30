@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Systems.h"
 
 // PhysicsEngine includes rigid body, soft body, and fluid computations.
 // ParticleEngine
@@ -38,33 +39,32 @@ void Game::start() {
 		lastFrameTime = currentFrameTime;
 
 		ioEngine_.processInput();
-		this->update(dt_);
 		renderEngine_.clear();
-		this->render();
+		this->update(dt_);
 		ioEngine_.swapBuffers();
 	}
 
 }
 
 
-void Game::addGameObject(GameObject *gameObject) {
-	gameObjects_.push_back(gameObject);
+void Game::addEntity(Entity *entity) {
+	entities_.push_back(entity);
 }
+void Game::addSystem(System* system) {
+	systems_.push_back(system);
+}
+
 
 void Game::update(float const dt) {
-	for (auto &go : gameObjects_) {
-		if (go->active) {
-			go->update(dt);
+	for (auto& system : systems_) {
+		for (auto& e : entities_) {
+			system->execute(*e);
 		}
 	}
+
+	// how to define system order?
+	// Should I pass the entity vector pointer to each system?
+	// Or, simply add the systems in the correct order.
 
 	// Update other engines here.
-}
-
-void Game::render() {
-	for (auto &go : gameObjects_) {
-		if (go->texture != NULL) {
-			renderEngine_.drawTexture(go->texture, go->transform.position, Eigen::Vector2f(100, 100), 3.14 / 4);
-		}
-	}
 }
