@@ -12,20 +12,25 @@ public:
 		}
 	}
 
-	void addComponent(Component* c) {
-		int id = Component::getComponentType(c);
+	template <typename T>
+	void applyComponent(T* c) {
+		int id = Component::getComponentTypeID<T>();
+
+		if (components_[id] != NULL) {
+			delete components_[id];
+		}
 		components_[id] = c;
 		componentSetSignature_[id] = 1;
 	}
 
 	template <typename T>
-	T* getComponent() { return (T*) components_[Component::getComponentType(typeid(T))];}
+	T* getComponent() { return (T*) components_[Component::getComponentTypeID<T>()];}
 
-	std::bitset<Component::MAX_COMPONENTS> getComponentSetSignature() { return componentSetSignature_; }
+	std::bitset<MAX_COMPONENTS> getComponentSetSignature() { return componentSetSignature_; }
 
 	bool active = true;
 
 private:
-	Component* components_[Component::MAX_COMPONENTS];
-	std::bitset<Component::MAX_COMPONENTS> componentSetSignature_;
+	Component* components_[MAX_COMPONENTS];
+	std::bitset<MAX_COMPONENTS> componentSetSignature_;
 };

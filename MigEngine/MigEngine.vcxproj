@@ -48,7 +48,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\glad\src\glad.c" />
     <ClCompile Include="src\collisionUtils.cpp" />
-    <ClCompile Include="src\ComponentManager.cpp" />
+    <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="example\main.cpp" />

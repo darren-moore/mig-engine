@@ -17,9 +17,9 @@ protected:
 
 	template <typename T>
 	void addRequiredComponent() {
-		systemSignature_[Component::getComponentType(typeid(T))] = 1;
+		systemSignature_[Component::getComponentTypeID<T>()] = 1;
 	}
 
 private:
-	std::bitset<Component::MAX_COMPONENTS> systemSignature_;
+	std::bitset<MAX_COMPONENTS> systemSignature_;
 };

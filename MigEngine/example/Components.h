@@ -21,8 +21,8 @@ struct gTransform : public Component {
 };
 
 struct Player : public Component {
-	Player(std::string upKey, std::string downKey, std::string leftKey, std::string rightKey, float speed) :
-		upKey(upKey), downKey(downKey), leftKey(leftKey), rightKey(rightKey), speed(speed) {};
-	std::string upKey, downKey, leftKey, rightKey;
+	Player(std::string upKey, std::string downKey, float speed) :
+		upKey(upKey), downKey(downKey), speed(speed) {};
+	std::string upKey, downKey;
 	float speed;
 };

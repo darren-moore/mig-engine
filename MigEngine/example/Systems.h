@@ -8,21 +8,21 @@ public:
 	void init() {
 		addRequiredComponent<Player>();
 		addRequiredComponent<gTransform>();
+		ioEngine_ = Locator::getIOEngine();
 	}
 
 private:
+	IOEngine* ioEngine_;
+
 	void execute(Entity& e) {
-		if (Locator::getIOEngine()->isDown(e.getComponent<Player>()->upKey)) {
-			e.getComponent<gTransform>()->position[1] = e.getComponent<gTransform>()->position[1] - e.getComponent<Player>()->speed;
+		Player* player = e.getComponent<Player>();
+		gTransform* transform = e.getComponent<gTransform>();
+
+		if (ioEngine_->isDown(player->upKey)) {
+			transform->position[1] = transform->position[1] - player->speed;
 		}
-		if (Locator::getIOEngine()->isDown(e.getComponent<Player>()->downKey)) {
-			e.getComponent<gTransform>()->position[1] = e.getComponent<gTransform>()->position[1] + e.getComponent<Player>()->speed;
-		}
-		if (Locator::getIOEngine()->isDown(e.getComponent<Player>()->leftKey)) {
-			e.getComponent<gTransform>()->position[0] = e.getComponent<gTransform>()->position[0] - e.getComponent<Player>()->speed;
-		}
-		if (Locator::getIOEngine()->isDown(e.getComponent<Player>()->rightKey)) {
-			e.getComponent<gTransform>()->position[0] = e.getComponent<gTransform>()->position[0] + e.getComponent<Player>()->speed;
+		if (ioEngine_->isDown(e.getComponent<Player>()->downKey)) {
+			transform->position[1] = transform->position[1] + player->speed;
 		}
 	}
 };
@@ -32,9 +32,14 @@ public:
 	void init() {
 		addRequiredComponent<Sprite>();
 		addRequiredComponent<gTransform>();
+		renderEngine_ = Locator::getRenderEngine();
+		ioEngine_ = Locator::getIOEngine();
 	}
 private:
+	RenderEngine* renderEngine_;
+	IOEngine* ioEngine_;
+
 	void execute(Entity& e) {
-		Locator::getRenderEngine()->drawTexture(e.getComponent<Sprite>()->texture, e.getComponent<gTransform>()->position, Eigen::Vector2f(100, 100), Locator::getIOEngine()->getCurrentWindowTime() * 2);
+		renderEngine_->drawTexture(e.getComponent<Sprite>()->texture, e.getComponent<gTransform>()->position, Eigen::Vector2f(100, 100), ioEngine_->getCurrentWindowTime() * 2);
 	}
 };

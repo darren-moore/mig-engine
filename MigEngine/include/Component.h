@@ -1,35 +1,27 @@
 #pragma once
-#include <unordered_map>
-#include <typeinfo>
-#include <typeindex>
+#include <type_traits>
+
+#define MAX_COMPONENTS 32
 
 class Component {
 public:
-	Component() {};
-
-	// This virtual function is required for Run-time type information(RTTI).
-	// It allows typeis() to differentiate derived classes.
-	virtual ~Component() {}
-
-	static const int MAX_COMPONENTS = 32;
-	bool active = true;
-
-	static int getComponentType(Component* component) {
-		return getComponentType(typeid(*component));
-	}
-
-	static int getComponentType(const std::type_info& type) {
-		if (typeToIndex_.count(type) == 0) {
-			std::type_index myIdx = type;
-			typeToIndex_[type] = topIndex_;
-			return topIndex_++;
-		}
-		else {
-			return typeToIndex_[type];
-		}
+	// Template provides a distinct copy of typeID for each component.
+	template <typename T>
+	static int getComponentTypeID() {
+		static int typeID = initialiseComponentTypeID<T>(); // This line runs once for each typename provided. 
+		return typeID;
 	}
 
 private:
-	static std::unordered_map<std::type_index, int> typeToIndex_;
-	static int topIndex_;
+	static int topIndex_;	// initialized to 0
+
+	// Runtime type information is cached in getComponentTypeID.
+	// Returns -1 for non-Component objects.
+	template <typename T>
+	static int initialiseComponentTypeID() {
+		if (std::is_base_of<Component, T>::value)
+			return topIndex_++;
+		else
+			return -1;
+	}
 };
