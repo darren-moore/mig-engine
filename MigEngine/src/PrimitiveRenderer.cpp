@@ -1,6 +1,7 @@
 #include "PrimitiveRenderer.h"
 #include <Eigen/Dense>
 #include "LAutils.h"
+#include "Locator.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>

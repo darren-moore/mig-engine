@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Locator.h"
 
 Renderer::Renderer() {
 	renderEngine_ = Locator::getRenderEngine();

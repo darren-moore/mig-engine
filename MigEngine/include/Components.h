@@ -5,7 +5,8 @@
 
 // Should follow RAII, so these components should never need destructors...
 
-struct Sprite : public Component {
+class Sprite : public Component {
+public:
 	Sprite(Texture* texture, Eigen::Vector2f origin = Eigen::Vector2f::Zero()) : texture(texture), origin(origin) {};
 	Texture* texture;
 	Eigen::Vector2f origin;

@@ -26,6 +26,10 @@ void Game::stop() {
 }
 
 void Game::start() {
+	for (auto& system : systems_) {
+		system->init();
+	}
+
 	float lastFrameTime = 0;
 	renderEngine_.setClearColor(0, 0, 0, 1);
 	while (true) {
@@ -58,13 +62,11 @@ void Game::addSystem(System* system) {
 void Game::update(float const dt) {
 	for (auto& system : systems_) {
 		for (auto& e : entities_) {
-			system->execute(*e);
+			system->validateAndExecute(*e);
 		}
 	}
 
-	// how to define system order?
-	// Should I pass the entity vector pointer to each system?
-	// Or, simply add the systems in the correct order.
+	// System order defined by order added to game.
 
-	// Update other engines here.
+	// Update engines here.
 }

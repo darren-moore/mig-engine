@@ -19,10 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="example\Ball.h" />
-    <ClInclude Include="example\Paddle.h" />
     <ClInclude Include="include\collisionUtils.h" />
     <ClInclude Include="include\Components.h" />
+    <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Component.h" />
@@ -48,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\src\glad.c" />
-    <ClCompile Include="example\Ball.cpp" />
-    <ClCompile Include="example\Paddle.cpp" />
     <ClCompile Include="src\collisionUtils.cpp" />
+    <ClCompile Include="src\ComponentManager.cpp" />
+    <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="example\main.cpp" />
     <ClCompile Include="src\LAutils.cpp" />
