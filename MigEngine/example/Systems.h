@@ -1,6 +1,6 @@
 #pragma once
-#include "Components.h"
 #include "System.h"
+#include "Components.h"
 #include "Locator.h"
 
 class MovementSystem : public System {
