@@ -1,7 +1,11 @@
 #pragma once
 #include <type_traits>
+#include <exception>
 
 #define MAX_COMPONENTS 32
+
+struct NotComponentException : public std::exception {
+};
 
 class Component {
 public:
@@ -16,12 +20,11 @@ private:
 	static int topIndex_;	// initialized to 0
 
 	// Runtime type information is cached in getComponentTypeID.
-	// Returns -1 for non-Component objects.
 	template <typename T>
 	static int initialiseComponentTypeID() {
 		if (std::is_base_of<Component, T>::value)
 			return topIndex_++;
 		else
-			return -1;
+			throw NotComponentException();
 	}
 };

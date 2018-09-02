@@ -12,6 +12,12 @@ public:
 	Eigen::Vector2f origin;
 };
 
+struct Quad : public Component {
+	Quad(Eigen::Vector2f offset, Eigen::Vector2f scale) :
+		offset(offset), scale(scale) {};
+	Eigen::Vector2f offset, scale;
+};
+
 struct gTransform : public Component {
 	gTransform(Eigen::Vector2f position = Eigen::Vector2f::Zero(), float rotation = 0, Eigen::Vector2f scale = Eigen::Vector2f::Ones()) : 
 		position(position), rotation(rotation), scale(scale) {};
@@ -25,4 +31,23 @@ struct Player : public Component {
 		upKey(upKey), downKey(downKey), speed(speed) {};
 	std::string upKey, downKey;
 	float speed;
+};
+
+struct BoxCollider : public Component {
+	BoxCollider(Eigen::Vector2f offset, Eigen::Vector2f scale) :
+		offset(offset), scale(scale) {};
+	Eigen::Vector2f offset, scale;
+};
+
+struct CircleCollider : public Component {
+	CircleCollider(Eigen::Vector2f offset, float radius) :
+		offset(offset), radius(radius) {};
+	Eigen::Vector2f offset;
+	float radius;
+};
+
+struct Velocity : public Component {
+	Velocity(Eigen::Vector2f velocity) :
+		velocity(velocity) {};
+	Eigen::Vector2f velocity;
 };

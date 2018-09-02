@@ -33,9 +33,6 @@
     <ClInclude Include="include\IOEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="example\Tank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ResourceEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -94,9 +91,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\IOEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="example\Tank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="example\main.cpp">

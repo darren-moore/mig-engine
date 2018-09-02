@@ -59,10 +59,10 @@ void Game::addSystem(System* system) {
 }
 
 
-void Game::update(float const dt) {
+void Game::update(const float dt) {
 	for (auto& system : systems_) {
 		for (auto& e : entities_) {
-			system->validateAndExecute(*e);
+			system->validateAndExecute(*e, dt);
 		}
 	}
 

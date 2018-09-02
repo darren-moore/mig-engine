@@ -32,7 +32,6 @@
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\ResourceEngine.h" />
     <ClInclude Include="include\Shader.h" />
-    <ClInclude Include="example\Tank.h" />
     <ClInclude Include="include\stb_image.h" />
     <ClInclude Include="include\System.h" />
     <ClInclude Include="include\Systems.h" />
@@ -59,7 +58,6 @@
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\ResourceEngine.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="example\Tank.cpp" />
     <ClCompile Include="src\IOEngine.cpp" />
     <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
