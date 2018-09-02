@@ -18,12 +18,25 @@ struct Quad : public Component {
 	Eigen::Vector2f offset, scale;
 };
 
+struct Circle : public Component {
+	Circle(Eigen::Vector2f offset, float radius) :
+		offset(offset), radius(radius) {};
+	Eigen::Vector2f offset;
+	float radius;
+};
+
 struct gTransform : public Component {
 	gTransform(Eigen::Vector2f position = Eigen::Vector2f::Zero(), float rotation = 0, Eigen::Vector2f scale = Eigen::Vector2f::Ones()) : 
 		position(position), rotation(rotation), scale(scale) {};
 	Eigen::Vector2f position;
 	float rotation;	// in radians
 	Eigen::Vector2f scale;
+};
+
+struct Velocity : public Component {
+	Velocity(Eigen::Vector2f velocity) :
+		velocity(velocity) {};
+	Eigen::Vector2f velocity;
 };
 
 struct Player : public Component {
@@ -33,21 +46,17 @@ struct Player : public Component {
 	float speed;
 };
 
-struct BoxCollider : public Component {
-	BoxCollider(Eigen::Vector2f offset, Eigen::Vector2f scale) :
-		offset(offset), scale(scale) {};
+
+struct CollisionShape : public Component {
+	enum Shape {
+		box, circle
+	};
+	CollisionShape(CollisionShape::Shape shape, Eigen::Vector2f offset, Eigen::Vector2f scale) :
+		shape(shape), offset(offset), scale(scale) {};
+	CollisionShape(CollisionShape::Shape shape, Eigen::Vector2f offset, float radius) :
+		shape(shape), offset(offset), radius(radius) {};
+
+	Shape shape;
 	Eigen::Vector2f offset, scale;
-};
-
-struct CircleCollider : public Component {
-	CircleCollider(Eigen::Vector2f offset, float radius) :
-		offset(offset), radius(radius) {};
-	Eigen::Vector2f offset;
 	float radius;
-};
-
-struct Velocity : public Component {
-	Velocity(Eigen::Vector2f velocity) :
-		velocity(velocity) {};
-	Eigen::Vector2f velocity;
 };

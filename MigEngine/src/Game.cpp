@@ -61,9 +61,7 @@ void Game::addSystem(System* system) {
 
 void Game::update(const float dt) {
 	for (auto& system : systems_) {
-		for (auto& e : entities_) {
-			system->validateAndExecute(*e, dt);
-		}
+		system->validateAndExecute(entities_, dt);
 	}
 
 	// System order defined by order added to game.

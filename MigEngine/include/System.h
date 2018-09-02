@@ -2,17 +2,25 @@
 #include "Component.h"
 #include "Entity.h"
 #include <bitset>
+#include <vector>
 
 class System {
 public:
 	virtual void init() = 0;
-	void validateAndExecute(Entity& e, const float dt) { if (validateEntity(e)) execute(e, dt);  }
+	void validateAndExecute(std::vector<Entity*> entities, const float dt) {
+		std::vector<Entity*> validatedEntities;
+		for (auto& e : entities) {
+			if (validateEntity(e))
+				validatedEntities.push_back(e);
+		}
+		execute(validatedEntities, dt);
+	}
 
 protected:
-	virtual void execute(Entity& e, const float dt) = 0;
+	virtual void execute(std::vector<Entity*>& e, const float dt) = 0;
 
-	bool validateEntity(Entity& e) { 
-		return((e.getComponentSetSignature() & systemSignature_) == systemSignature_); 
+	bool validateEntity(Entity* e) { 
+		return((e->getComponentSetSignature() & systemSignature_) == systemSignature_); 
 	}
 
 	template <typename T>
