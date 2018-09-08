@@ -3,8 +3,8 @@
 #include "stb_image.h"
 
 void ResourceEngine::init() {
-	addShader("src/defaultVertShader.vert", "src/defaultFragShader.frag", "defaultSpriteShader");
-	addShader("src/defaultPrimitiveVertShader.vert", "src/defaultPrimitiveFragShader.frag", "defaultPrimitiveShader");
+	addShader("src/DefaultShaders/defaultVertShader.vert", "src/DefaultShaders/defaultFragShader.frag", "defaultSpriteShader");
+	addShader("src/DefaultShaders/defaultPrimitiveVertShader.vert", "src/DefaultShaders/defaultPrimitiveFragShader.frag", "defaultPrimitiveShader");
 }
 
 std::string ResourceEngine::getFile(const std::string& filePath) {

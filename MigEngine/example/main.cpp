@@ -8,8 +8,8 @@ int main() {
 	Game pong(WINDOW_WIDTH, WINDOW_HEIGHT);
 	
 	CollisionEngine* ce = Locator::getCollisionEngine();
-	Locator::getResourceEngine()->addTexture("example/face.png", "face");
-	Locator::getResourceEngine()->addSound("example/koto.mp3", "koto");
+	Locator::getResourceEngine()->addTexture("example/face.png", "face");	// I drew this at some point.
+	Locator::getResourceEngine()->addSound("example/koto.mp3", "koto");		// I was learning to play koto.
 	Locator::getIOEngine()->bindInput("P1_UP", GLFW_KEY_W);
 	Locator::getIOEngine()->bindInput("P1_DOWN", GLFW_KEY_S);
 	Locator::getIOEngine()->bindInput("P2_UP", GLFW_KEY_UP);

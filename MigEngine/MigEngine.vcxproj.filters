@@ -45,9 +45,6 @@
     <ClInclude Include="include\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\PrimitiveRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\LAutils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -64,9 +61,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Systems.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\EntityManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\CollisionEngine.h">
@@ -89,26 +83,20 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\defaultVertShader.vert">
+    <None Include="src\DefaultShaders\defaultVertShader.vert">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="src\defaultFragShader.frag">
+    <None Include="src\DefaultShaders\defaultFragShader.frag">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="src\defaultPrimitiveVertShader.vert" />
-    <None Include="src\defaultPrimitiveFragShader.frag" />
+    <None Include="src\DefaultShaders\defaultPrimitiveFragShader.frag" />
+    <None Include="src\DefaultShaders\defaultPrimitiveVertShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RenderEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\IOEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="example\main.cpp">
@@ -120,16 +108,10 @@
     <ClCompile Include="src\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ResourceEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Locator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PrimitiveRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\LAutils.cpp">
@@ -138,16 +120,22 @@
     <ClCompile Include="src\collisionUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EntityManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CollisionEngine.cpp">
+    <ClCompile Include="src\SubEngines\AudioEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AudioEngine.cpp">
+    <ClCompile Include="src\SubEngines\CollisionEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SubEngines\IOEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SubEngines\RenderEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SubEngines\ResourceEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

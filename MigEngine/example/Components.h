@@ -17,8 +17,7 @@ struct Velocity : public Component {
 	Eigen::Vector2f velocity;
 };
 
-class Sprite : public Component {
-public:
+struct Sprite : public Component {
 	Sprite(Texture* texture, Eigen::Vector2f origin = Eigen::Vector2f::Zero()) : texture(texture), origin(origin) {};
 	Texture* texture;
 	Eigen::Vector2f origin;

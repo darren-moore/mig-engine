@@ -24,13 +24,11 @@
     <ClInclude Include="include\CollisionShape.h" />
     <ClInclude Include="include\collisionUtils.h" />
     <ClInclude Include="include\Components.h" />
-    <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\LAutils.h" />
     <ClInclude Include="include\Locator.h" />
-    <ClInclude Include="include\PrimitiveRenderer.h" />
     <ClInclude Include="include\RenderEngine.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\ResourceEngine.h" />
@@ -45,28 +43,26 @@
     <ClInclude Include="include\IOEngine.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\defaultFragShader.frag" />
-    <None Include="src\defaultPrimitiveFragShader.frag" />
-    <None Include="src\defaultPrimitiveVertShader.vert" />
-    <None Include="src\defaultVertShader.vert" />
+    <None Include="src\DefaultShaders\defaultFragShader.frag" />
+    <None Include="src\DefaultShaders\defaultPrimitiveFragShader.frag" />
+    <None Include="src\DefaultShaders\defaultPrimitiveVertShader.vert" />
+    <None Include="src\DefaultShaders\defaultVertShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\src\glad.c" />
-    <ClCompile Include="src\AudioEngine.cpp" />
-    <ClCompile Include="src\CollisionEngine.cpp" />
+    <ClCompile Include="src\SubEngines\AudioEngine.cpp" />
+    <ClCompile Include="src\SubEngines\CollisionEngine.cpp" />
     <ClCompile Include="src\collisionUtils.cpp" />
     <ClCompile Include="src\Component.cpp" />
-    <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="example\main.cpp" />
     <ClCompile Include="src\LAutils.cpp" />
     <ClCompile Include="src\Locator.cpp" />
-    <ClCompile Include="src\PrimitiveRenderer.cpp" />
-    <ClCompile Include="src\RenderEngine.cpp" />
+    <ClCompile Include="src\SubEngines\RenderEngine.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\ResourceEngine.cpp" />
+    <ClCompile Include="src\SubEngines\ResourceEngine.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\IOEngine.cpp" />
+    <ClCompile Include="src\SubEngines\IOEngine.cpp" />
     <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
