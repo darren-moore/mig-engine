@@ -188,6 +188,8 @@ private:
 		else if (circleLineSegmentCollision(p2, p4, c, r)) {
 			resolvePlanarCollision(p2, p4, c, r, pos, vel);
 		}
+
+		// a touch of noise
 		
 	}
 

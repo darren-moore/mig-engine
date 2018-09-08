@@ -44,3 +44,12 @@ void ResourceEngine::addTexture(const std::string& filePath, const std::string& 
 Texture* ResourceEngine::getTexture(const std::string& textureName) {
 	return textureMap_[textureName];
 }
+
+void ResourceEngine::addSound(const std::string& soundFilename, const std::string& soundName) {
+	Sound* sound = new Sound(soundFilename);
+	soundMap_[soundName] = sound;
+}
+
+Sound* ResourceEngine::getSound(const std::string& soundName) {
+	return soundMap_[soundName];
+};

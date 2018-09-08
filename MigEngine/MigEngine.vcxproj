@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\AudioEngine.h" />
     <ClInclude Include="include\CollisionEngine.h" />
     <ClInclude Include="include\CollisionShape.h" />
     <ClInclude Include="include\collisionUtils.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="include\ResourceEngine.h" />
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\Shape.h" />
+    <ClInclude Include="include\Sound.h" />
     <ClInclude Include="include\StandardComponents.h" />
     <ClInclude Include="include\stb_image.h" />
     <ClInclude Include="include\System.h" />
@@ -50,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\src\glad.c" />
+    <ClCompile Include="src\AudioEngine.cpp" />
     <ClCompile Include="src\CollisionEngine.cpp" />
     <ClCompile Include="src\collisionUtils.cpp" />
     <ClCompile Include="src\Component.cpp" />
@@ -125,11 +128,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\mooda\Documents\mig-engine\MigEngine\include;C:\Users\mooda\Downloads\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb;C:\Users\mooda\Documents\glfw-3.2.1.bin.WIN32\include;C:\Users\mooda\Documents\glad\include;$(IncludePath)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mooda\Documents\irrKlang-1.6.0\include;C:\Users\mooda\Documents\mig-engine\MigEngine\include;C:\Users\mooda\Downloads\eigen-eigen-5a0156e40feb\eigen-eigen-5a0156e40feb;C:\Users\mooda\Documents\glfw-3.2.1.bin.WIN32\include;C:\Users\mooda\Documents\glad\include;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\mooda\Documents\glfw-3.2.1.bin.WIN32\lib-vc2015</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\mooda\Documents\irrKlang-1.6.0\lib\Win32-visualStudio;C:\Users\mooda\Documents\glfw-3.2.1.bin.WIN32\lib-vc2015</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>

@@ -8,7 +8,8 @@ int main() {
 	Game pong(WINDOW_WIDTH, WINDOW_HEIGHT);
 	
 	CollisionEngine* ce = Locator::getCollisionEngine();
-	Locator::getResourceEngine()->addTexture("src/face.png", "face");
+	Locator::getResourceEngine()->addTexture("example/face.png", "face");
+	Locator::getResourceEngine()->addSound("example/koto.mp3", "koto");
 	Locator::getIOEngine()->bindInput("P1_UP", GLFW_KEY_W);
 	Locator::getIOEngine()->bindInput("P1_DOWN", GLFW_KEY_S);
 	Locator::getIOEngine()->bindInput("P2_UP", GLFW_KEY_UP);
@@ -65,14 +66,14 @@ int main() {
 		pong.addEntity(wall4);
 	}
 
-
 	pong.addSystem(new MovementSystem());
 	pong.addSystem(new SpriteRenderSystem());
 	pong.addSystem(new TimeIntegrationSystem());
 	pong.addSystem(new QuadRenderSystem());
 	pong.addSystem(new CircleRenderSystem());
 	pong.addSystem(new BallCollisionResolutionSystem());
-	
+
+	Locator::getAudioEngine()->playSound(Locator::getResourceEngine()->getSound("koto"), true);
 
 	// Run the game!
 	pong.start();

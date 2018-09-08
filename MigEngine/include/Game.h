@@ -9,6 +9,8 @@
 #include "Entity.h"
 #include "Component.h"
 #include "System.h"
+
+#include "irrKlang.h"
 #include <vector>
 
 class Game {
@@ -31,6 +33,7 @@ private:
 	RenderEngine renderEngine_;
 	IOEngine ioEngine_;
 	CollisionEngine collisionEngine_;
+	AudioEngine audioEngine_;
 
 	float dt_ = 0;
 };
