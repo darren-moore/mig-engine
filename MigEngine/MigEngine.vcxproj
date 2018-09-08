@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\CollisionEngine.h" />
+    <ClInclude Include="include\CollisionShape.h" />
     <ClInclude Include="include\collisionUtils.h" />
     <ClInclude Include="include\Components.h" />
     <ClInclude Include="include\EntityManager.h" />
@@ -32,6 +34,8 @@
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\ResourceEngine.h" />
     <ClInclude Include="include\Shader.h" />
+    <ClInclude Include="include\Shape.h" />
+    <ClInclude Include="include\StandardComponents.h" />
     <ClInclude Include="include\stb_image.h" />
     <ClInclude Include="include\System.h" />
     <ClInclude Include="include\Systems.h" />
@@ -46,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\src\glad.c" />
+    <ClCompile Include="src\CollisionEngine.cpp" />
     <ClCompile Include="src\collisionUtils.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\EntityManager.cpp" />

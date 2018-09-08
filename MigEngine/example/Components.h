@@ -1,9 +1,21 @@
 #pragma once
+
 #include "Component.h"
 #include "Texture.h"
 #include <Eigen/Core>
 
-// Should follow RAII, so these components should never need destructors...
+struct Player : public Component {
+	Player(std::string upKey, std::string downKey, float speed) :
+		upKey(upKey), downKey(downKey), speed(speed) {};
+	std::string upKey, downKey;
+	float speed;
+};
+
+struct Velocity : public Component {
+	Velocity(Eigen::Vector2f velocity) :
+		velocity(velocity) {};
+	Eigen::Vector2f velocity;
+};
 
 class Sprite : public Component {
 public:
@@ -18,45 +30,9 @@ struct Quad : public Component {
 	Eigen::Vector2f offset, scale;
 };
 
-struct Circle : public Component {
-	Circle(Eigen::Vector2f offset, float radius) :
+struct Circ : public Component {
+	Circ(Eigen::Vector2f offset, float radius) :
 		offset(offset), radius(radius) {};
 	Eigen::Vector2f offset;
-	float radius;
-};
-
-struct gTransform : public Component {
-	gTransform(Eigen::Vector2f position = Eigen::Vector2f::Zero(), float rotation = 0, Eigen::Vector2f scale = Eigen::Vector2f::Ones()) : 
-		position(position), rotation(rotation), scale(scale) {};
-	Eigen::Vector2f position;
-	float rotation;	// in radians
-	Eigen::Vector2f scale;
-};
-
-struct Velocity : public Component {
-	Velocity(Eigen::Vector2f velocity) :
-		velocity(velocity) {};
-	Eigen::Vector2f velocity;
-};
-
-struct Player : public Component {
-	Player(std::string upKey, std::string downKey, float speed) :
-		upKey(upKey), downKey(downKey), speed(speed) {};
-	std::string upKey, downKey;
-	float speed;
-};
-
-
-struct CollisionShape : public Component {
-	enum Shape {
-		box, circle
-	};
-	CollisionShape(CollisionShape::Shape shape, Eigen::Vector2f offset, Eigen::Vector2f scale) :
-		shape(shape), offset(offset), scale(scale) {};
-	CollisionShape(CollisionShape::Shape shape, Eigen::Vector2f offset, float radius) :
-		shape(shape), offset(offset), radius(radius) {};
-
-	Shape shape;
-	Eigen::Vector2f offset, scale;
 	float radius;
 };

@@ -3,6 +3,7 @@
 #include "IOEngine.h"
 #include "RenderEngine.h"
 #include "ResourceEngine.h"
+#include "CollisionEngine.h"
 
 #include "Locator.h"
 #include "Entity.h"
@@ -25,8 +26,11 @@ public:
 private:
 	std::vector<Entity*> entities_;
 	std::vector<System*> systems_;
+
 	ResourceEngine resourceEngine_;
 	RenderEngine renderEngine_;
 	IOEngine ioEngine_;
+	CollisionEngine collisionEngine_;
+
 	float dt_ = 0;
 };

@@ -1,12 +1,6 @@
 #include "Game.h"
 #include "System.h"
 
-// PhysicsEngine includes rigid body, soft body, and fluid computations.
-// ParticleEngine
-// TextEngine
-// AudioEngine
-// GUI Engine
-
 Game::Game(GLuint windowWidth, GLuint windowHeight) {
 	ioEngine_.init(windowWidth, windowHeight);
 	Locator::provide(&ioEngine_);
@@ -16,10 +10,14 @@ Game::Game(GLuint windowWidth, GLuint windowHeight) {
 
 	renderEngine_.init();
 	Locator::provide(&renderEngine_);
+
+	collisionEngine_.init();
+	Locator::provide(&collisionEngine_);
 }
 
 // Shutdown sub-engines in inverse start-order.
 void Game::stop() {
+	collisionEngine_.stop();
 	renderEngine_.stop();
 	resourceEngine_.stop();
 	ioEngine_.stop();
@@ -44,6 +42,7 @@ void Game::start() {
 
 		ioEngine_.processInput();
 		renderEngine_.clear();
+		collisionEngine_.processCollisions();
 		this->update(dt_);
 		ioEngine_.swapBuffers();
 	}

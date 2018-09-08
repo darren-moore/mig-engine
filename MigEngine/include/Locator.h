@@ -3,11 +3,9 @@
 #include "RenderEngine.h"
 #include "IOEngine.h"
 #include "ResourceEngine.h"
+#include "CollisionEngine.h"
 
 // An implementation of the Service Locator pattern.
-// Simply provide the sub-engines and  get them.
-
-
 class Locator {
 public:
 
@@ -20,8 +18,12 @@ public:
 	static ResourceEngine* getResourceEngine() { return resourceEngine_; }
 	static void provide(ResourceEngine* resourceEngine) { resourceEngine_ = resourceEngine; }
 
+	static CollisionEngine* getCollisionEngine() { return collisionEngine_; }
+	static void provide(CollisionEngine* collisionEngine) { collisionEngine_ = collisionEngine; }
+
 private:
 	static IOEngine* ioEngine_;
 	static RenderEngine* renderEngine_;
 	static ResourceEngine* resourceEngine_;
+	static CollisionEngine* collisionEngine_;
 };
