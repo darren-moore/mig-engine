@@ -20,9 +20,9 @@ public:
 	void setShader(Shader shader);
 
 	void drawTexture(Texture* texture, const Eigen::Vector2f& position, const Eigen::Vector2f& size = Eigen::Vector2f(1, 1), float rotation = 0.0f);
-	void drawLine(float x1, float y1, float x2, float y2);
-	void drawRectangle(float x1, float y1, float x2, float y2);
-	void drawCircle(float x, float y, float r);
+	void drawLine(Eigen::Vector2f a, Eigen::Vector2f b);
+	void drawRectangle(Eigen::Vector2f p1, Eigen::Vector2f p2);
+	void drawCircle(Eigen::Vector2f c, float r);
 	void setCircleNumSides(int n);
 
 	void clear();

@@ -30,7 +30,6 @@
     <ClInclude Include="include\LAutils.h" />
     <ClInclude Include="include\Locator.h" />
     <ClInclude Include="include\RenderEngine.h" />
-    <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\ResourceEngine.h" />
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\Shape.h" />
@@ -59,7 +58,6 @@
     <ClCompile Include="src\LAutils.cpp" />
     <ClCompile Include="src\Locator.cpp" />
     <ClCompile Include="src\SubEngines\RenderEngine.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\SubEngines\ResourceEngine.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\SubEngines\IOEngine.cpp" />

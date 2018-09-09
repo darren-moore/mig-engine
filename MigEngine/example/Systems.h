@@ -66,8 +66,7 @@ private:
 		Eigen::Vector2f offset = e->getComponent<Quad>()->offset;
 		Eigen::Vector2f scale = e->getComponent<Quad>()->scale;
 		Eigen::Vector2f position = e->getComponent<gTransform>()->position;
-		renderEngine_->drawRectangle(offset.x() + position.x() - scale.x() / 2, offset.y() + position.y() - scale.y() / 2,
-			offset.x() + position.x() + scale.x() / 2, offset.y() + position.y() + scale.y() / 2);
+		renderEngine_->drawRectangle(offset + position - scale / 2, offset + position + scale / 2);
 	}
 };
 
@@ -87,7 +86,7 @@ private:
 		Eigen::Vector2f offset = e->getComponent<Circ>()->offset;
 		float radius = e->getComponent<Circ>()->radius;
 		Eigen::Vector2f position = e->getComponent<gTransform>()->position;
-		renderEngine_->drawCircle(offset.x() + position.x(), offset.y() + position.y(), radius);
+		renderEngine_->drawCircle(offset + position, radius);
 	}
 };
 
