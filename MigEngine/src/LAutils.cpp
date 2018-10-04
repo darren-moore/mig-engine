@@ -16,7 +16,7 @@ Eigen::Matrix4f eScale(const Eigen::Matrix4f& M, const Eigen::Vector3f& v) {
 }
 
 
-// Right handed, with -1,1 clip space. Addapted from glm's orthographic projection function.
+// Right handed, with -1,1 clip space. Adapted from glm's orthographic projection function.
 Eigen::Matrix4f eOrtho(float left, float right, float bottom, float top, float zNear, float zFar) {
 	Eigen::Matrix4f result = Eigen::Matrix4f::Identity();
 	result(0, 0) = 2.0f / (right - left);
