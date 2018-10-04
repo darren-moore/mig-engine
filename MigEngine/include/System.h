@@ -7,15 +7,15 @@
 class System {
 public:
 	virtual void init() = 0;
-	void validateAndExecute(Entity* e, const float dt) {
+	void validateAndExecute(std::shared_ptr<Entity> e, const float dt) {
 		if(validateEntity(e))
 			execute(e, dt);
 	}
 
 protected:
-	virtual void execute(Entity* e, const float dt) = 0;
+	virtual void execute(std::shared_ptr<Entity> e, const float dt) = 0;
 
-	bool validateEntity(Entity* e) { 
+	bool validateEntity(std::shared_ptr<Entity> e) { 
 		return((e->getComponentSetSignature() & systemSignature_) == systemSignature_); 
 	}
 

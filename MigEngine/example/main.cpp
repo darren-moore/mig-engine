@@ -16,7 +16,7 @@ int main() {
 	Locator::getIOEngine()->bindInput("P2_DOWN", GLFW_KEY_DOWN);
 
 	{
-		Entity* p1 = new Entity();
+		std::shared_ptr<Entity> p1 = std::make_shared<Entity>();
 		p1->applyComponent(new Quad(Eigen::Vector2f(0, 0), Eigen::Vector2f(30, 100)));
 		p1->applyComponent(new gTransform(Eigen::Vector2f(50, 400)));
 		p1->applyComponent(new Player("P1_UP", "P1_DOWN", .5f));
@@ -24,7 +24,7 @@ int main() {
 		ce->addCollisionEntity(p1);
 		pong.addEntity(p1);
 
-		Entity* p2 = new Entity();
+		std::shared_ptr<Entity> p2 = std::make_shared<Entity>();
 		p2->applyComponent(new Quad(Eigen::Vector2f(0, 0), Eigen::Vector2f(30, 100)));
 		p2->applyComponent(new gTransform(Eigen::Vector2f(750, 400)));
 		p2->applyComponent(new Player("P2_UP", "P2_DOWN", .5f));
@@ -34,7 +34,7 @@ int main() {
 	}
 
 	{
-		Entity* ball = new Entity();
+		std::shared_ptr<Entity> ball = std::make_shared<Entity>();
 		ball->applyComponent(new Circ(Eigen::Vector2f(0, 0), 20));
 		ball->applyComponent(new gTransform(Eigen::Vector2f(400, 300)));
 		ball->applyComponent(new CollisionShape(new Circle(Eigen::Vector2f(0, 0), 20)));
@@ -44,10 +44,10 @@ int main() {
 	}
 
 	{
-		Entity* wall1 = new Entity();
-		Entity* wall2 = new Entity();
-		Entity* wall3 = new Entity();
-		Entity* wall4 = new Entity();
+		std::shared_ptr<Entity> wall1 = std::make_shared<Entity>();
+		std::shared_ptr<Entity> wall2 = std::make_shared<Entity>();
+		std::shared_ptr<Entity> wall3 = std::make_shared<Entity>();
+		std::shared_ptr<Entity> wall4 = std::make_shared<Entity>();
 		wall1->applyComponent(new gTransform(Eigen::Vector2f(0, 0)));
 		wall2->applyComponent(new gTransform(Eigen::Vector2f(0, 0)));
 		wall3->applyComponent(new gTransform(Eigen::Vector2f(0, 0)));

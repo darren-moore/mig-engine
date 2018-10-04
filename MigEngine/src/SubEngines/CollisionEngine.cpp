@@ -14,10 +14,10 @@ void CollisionEngine::processCollisions() {
 
 	// Compute collision lists.
 	for (auto it1 = entityToHitEntities.begin(); it1 != entityToHitEntities.end(); ++it1) {
-		Entity* e1 = it1->first;
+		std::shared_ptr<Entity> e1 = it1->first;
 
 		for (auto it2 = it1; it2 != entityToHitEntities.end(); ++it2) {
-			Entity* e2 = it2->first;
+			std::shared_ptr<Entity> e2 = it2->first;
 			if (checkCollision(e1, e2)) {
 				entityToHitEntities[e1].push_back(e2);
 				entityToHitEntities[e2].push_back(e1);
@@ -27,7 +27,7 @@ void CollisionEngine::processCollisions() {
 }
 
 
-bool CollisionEngine::checkCollision(Entity* e1, Entity* e2) {
+bool CollisionEngine::checkCollision(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2) {
 	if (e1 == e2) {
 		return false;
 	}
@@ -77,10 +77,10 @@ bool CollisionEngine::checkCollision(Entity* e1, Entity* e2) {
 }
 
 
-void CollisionEngine::addCollisionEntity(Entity* e) {
-	entityToHitEntities[e] = vector<Entity*>();
+void CollisionEngine::addCollisionEntity(std::shared_ptr<Entity> e) {
+	entityToHitEntities[e] = vector<std::shared_ptr<Entity>>();
 }
 
-vector<Entity*> CollisionEngine::getCollisions(Entity* e) {
+vector<std::shared_ptr<Entity>> CollisionEngine::getCollisions(std::shared_ptr<Entity> e) {
 	return entityToHitEntities[e];
 }
