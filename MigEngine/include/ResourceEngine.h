@@ -6,7 +6,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <sstream>
 #include <fstream>
@@ -27,7 +27,7 @@ public:
 	void addSound(const std::string& filePath, const std::string& soundName);
 	Sound* getSound(const std::string& soundName);
 private:
-	std::map<std::string, Shader*> shaderMap_;
-	std::map<std::string, Texture*> textureMap_;
-	std::map<std::string, Sound*> soundMap_;
+	std::unordered_map<std::string, Shader*> shaderMap_;
+	std::unordered_map<std::string, Texture*> textureMap_;
+	std::unordered_map<std::string, Sound*> soundMap_;
 };
