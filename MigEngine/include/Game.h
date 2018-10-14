@@ -21,12 +21,12 @@ public:
 	void stop();
 	void start();
 	void update(float const dt);
-	void addEntity(std::shared_ptr<Entity> entity);
+	void addEntity(Entity* entity);
 	void addSystem(System* system);
 	float getDt() { return dt_; }
 
 private:
-	std::vector<std::shared_ptr<Entity>> entities_;
+	std::vector<Entity*> entities_;
 	std::vector<System*> systems_;
 
 	ResourceEngine resourceEngine_;

@@ -15,11 +15,11 @@ public:
 	void stop() {};
 
 	void processCollisions();
-	void addCollisionEntity(std::shared_ptr<Entity> e);
-	std::vector<std::shared_ptr<Entity>> getCollisions(std::shared_ptr<Entity> e);
+	void addCollisionEntity(Entity* e);
+	std::vector<Entity*> getCollisions(Entity* e);
 
 private:
-	std::unordered_map<std::shared_ptr<Entity>, std::vector<std::shared_ptr<Entity>>> entityToHitEntities;
-	bool checkCollision(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2);
+	std::unordered_map<Entity*, std::vector<Entity*>> entityToHitEntities;
+	bool checkCollision(Entity* e1, Entity* e2);
 	
 };

@@ -16,7 +16,7 @@ public:
 private:
 	IOEngine* ioEngine_;
 
-	void execute(std::shared_ptr<Entity> e, const float dt) {
+	void execute(Entity* e, const float dt) {
 		Player* player = e->getComponent<Player>();
 		gTransform* transform = e->getComponent<gTransform>();
 		CollisionShape* collisionShape = e->getComponent<CollisionShape>();
@@ -45,7 +45,7 @@ private:
 	RenderEngine* renderEngine_;
 	IOEngine* ioEngine_;
 
-	void execute(std::shared_ptr<Entity> e, const float dt) {
+	void execute(Entity* e, const float dt) {
 		renderEngine_->drawTexture(e->getComponent<Sprite>()->texture, e->getComponent<gTransform>()->position, Eigen::Vector2f(100, 100), ioEngine_->getCurrentWindowTime() * 2);
 	}
 };
@@ -62,7 +62,7 @@ private:
 	RenderEngine* renderEngine_;
 	IOEngine* ioEngine_;
 
-	void execute(std::shared_ptr<Entity> e, const float dt) {
+	void execute(Entity* e, const float dt) {
 		Eigen::Vector2f offset = e->getComponent<Quad>()->offset;
 		Eigen::Vector2f scale = e->getComponent<Quad>()->scale;
 		Eigen::Vector2f position = e->getComponent<gTransform>()->position;
@@ -82,7 +82,7 @@ private:
 	RenderEngine* renderEngine_;
 	IOEngine* ioEngine_;
 
-	void execute(std::shared_ptr<Entity> e, const float dt) {
+	void execute(Entity* e, const float dt) {
 		Eigen::Vector2f offset = e->getComponent<Circ>()->offset;
 		float radius = e->getComponent<Circ>()->radius;
 		Eigen::Vector2f position = e->getComponent<gTransform>()->position;
@@ -97,7 +97,7 @@ public:
 		addRequiredComponent<gTransform>();
 	}
 private:
-	void execute(std::shared_ptr<Entity> e, const float dt) {
+	void execute(Entity* e, const float dt) {
 		e->getComponent<gTransform>()->position += dt * e->getComponent<Velocity>()->velocity;
 	}
 };
@@ -118,7 +118,7 @@ private:
 	IOEngine* ioEngine_;
 	CollisionEngine* collisionEngine_;
 
-	void execute(std::shared_ptr<Entity> ball, const float dt) {
+	void execute(Entity* ball, const float dt) {
 		Shape* s1 = ball->getComponent<CollisionShape>()->shape;
 		if (s1->getType() != Shape::type::circle) {
 			return;

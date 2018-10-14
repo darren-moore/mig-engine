@@ -53,7 +53,7 @@ void Game::start() {
 }
 
 
-void Game::addEntity(std::shared_ptr<Entity> entity) {
+void Game::addEntity(Entity *entity) {
 	entities_.push_back(entity);
 }
 void Game::addSystem(System* system) {
