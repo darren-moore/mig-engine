@@ -35,6 +35,10 @@ void RenderEngine::clear() {
 }
 
 void RenderEngine::drawTexture(Texture* texture, const Eigen::Vector2f& position, const Eigen::Vector2f& size, float rotation) {
+	drawTexture(texture, Vector2f::Zero(), Vector2f(texture->width, texture->height), position, size, rotation);
+}
+
+void RenderEngine::drawTexture(Texture* texture, const Eigen::Vector2f& topLeft, const Eigen::Vector2f& botRight, const Eigen::Vector2f& position, const Eigen::Vector2f& size, float rotation) {
 	textureShader_->use();
 	Matrix4f model = Matrix4f::Identity();
 
@@ -51,6 +55,12 @@ void RenderEngine::drawTexture(Texture* texture, const Eigen::Vector2f& position
 	textureShader_->setMat4("projection", projection);
 	textureShader_->setMat4("model", model);
 	textureShader_->setVec3("spriteColor", Eigen::Vector3f(1, 1, 1));
+
+	Matrix4f texMap = Matrix4f::Identity();
+	Vector2f subRectSize = botRight - topLeft;
+	texMap = eTranslate(texMap, Vector3f(topLeft.x() / texture->width, topLeft.y() / texture->height, 0.0f));
+	texMap = eScale(texMap, Vector3f(subRectSize.x(), subRectSize.y(), 1.0f).array() / Vector3f(texture->width, texture->height, 1.0f).array());
+	textureShader_->setMat4("texMap", texMap);
 
 	glActiveTexture(GL_TEXTURE0);
 	texture->bind();

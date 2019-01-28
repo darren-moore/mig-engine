@@ -16,6 +16,10 @@ Texture::Texture(unsigned char* textureData, int width, int height, int nrChanne
 
 }
 
+Texture::~Texture() {
+	glDeleteTextures(1, &ID);
+}
+
 void Texture::bind() {
 	glBindTexture(GL_TEXTURE_2D, ID);
 }

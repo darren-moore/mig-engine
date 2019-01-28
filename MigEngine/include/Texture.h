@@ -4,6 +4,7 @@
 class Texture {
 public:
 	Texture(unsigned char* textureData, int width, int height, int nrChannels);
+	~Texture();
 	void bind();
 	unsigned int ID;
 	GLuint Internal_Format; // Format of texture object

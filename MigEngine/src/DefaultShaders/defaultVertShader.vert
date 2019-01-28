@@ -7,7 +7,9 @@ out vec2 TexCoords;
 uniform mat4 model;
 uniform mat4 projection;
 
+uniform mat4 texMap;
+
 void main() {
-    TexCoords = inTexCoord;
+    TexCoords = vec2(texMap * vec4(inTexCoord, 0.0, 1.0));
     gl_Position = projection * model * vec4(inPos, 0.0, 1.0);
 }

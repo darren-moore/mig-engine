@@ -19,6 +19,7 @@ public:
 
 	void setShader(Shader shader);
 
+	void drawTexture(Texture* texture, const Eigen::Vector2f& topLeft, const Eigen::Vector2f& botRight, const Eigen::Vector2f& position, const Eigen::Vector2f& size = Eigen::Vector2f(1, 1), float rotation = 0.0f);
 	void drawTexture(Texture* texture, const Eigen::Vector2f& position, const Eigen::Vector2f& size = Eigen::Vector2f(1, 1), float rotation = 0.0f);
 	void drawLine(Eigen::Vector2f a, Eigen::Vector2f b);
 	void drawRectangle(Eigen::Vector2f p1, Eigen::Vector2f p2);
