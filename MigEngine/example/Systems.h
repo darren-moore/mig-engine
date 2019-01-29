@@ -10,11 +10,9 @@ public:
 		addRequiredComponent<Player>();
 		addRequiredComponent<gTransform>();
 		addRequiredComponent<CollisionShape>();
-		ioEngine_ = Locator::getIOEngine();
 	}
 
 private:
-	IOEngine* ioEngine_;
 
 	void execute(Entity* e, const float dt) {
 		Player* player = e->getComponent<Player>();
@@ -22,13 +20,28 @@ private:
 		CollisionShape* collisionShape = e->getComponent<CollisionShape>();
 		if (collisionShape->shape->getType() != Shape::box) { return; }
 		Box* box = (Box*)collisionShape->shape;
-		if (ioEngine_->isDown(player->upKey) &&
-			transform->position.y() + box->offset.y() - box->scale.y() / 2 > 0) {
-			transform->position[1] = transform->position[1] - player->speed;
+
+		float moveSpeed = player->speed;
+		if (Locator::getIOEngine().isDown(player->shoot)) {
+			moveSpeed *= .6f;
 		}
-		if (ioEngine_->isDown(player->downKey) &&
-			transform->position.y() + box->offset.y() + box->scale.y() / 2 < ioEngine_->getWindowHeight()) {
-			transform->position[1] = transform->position[1] + player->speed;
+
+		if (Locator::getIOEngine().isDown(player->up) &&
+			transform->position.y() + box->offset.y() - box->scale.y() / 2 > 0) {
+			transform->position[1] = transform->position[1] - moveSpeed;
+		}
+		if (Locator::getIOEngine().isDown(player->down) &&
+			transform->position.y() + box->offset.y() + box->scale.y() / 2 < Locator::getIOEngine().getWindowHeight()) {
+			transform->position[1] = transform->position[1] + moveSpeed;
+		}
+
+		if (Locator::getIOEngine().isDown(player->left) &&
+			transform->position.x() + box->offset.x() - box->scale.x() / 2 > 0) {
+			transform->position[0] = transform->position[0] - moveSpeed;
+		}
+		if (Locator::getIOEngine().isDown(player->right) &&
+			transform->position.x() + box->offset.x() + box->scale.x() / 2 < Locator::getIOEngine().getWindowWidth()) {
+			transform->position[0] = transform->position[0] + moveSpeed;
 		}
 	}
 };
@@ -38,15 +51,11 @@ public:
 	void init() {
 		addRequiredComponent<Sprite>();
 		addRequiredComponent<gTransform>();
-		renderEngine_ = Locator::getRenderEngine();
-		ioEngine_ = Locator::getIOEngine();
 	}
 private:
-	RenderEngine* renderEngine_;
-	IOEngine* ioEngine_;
 
 	void execute(Entity* e, const float dt) {
-		renderEngine_->drawTexture(e->getComponent<Sprite>()->texture, e->getComponent<gTransform>()->position, Eigen::Vector2f(100, 100), ioEngine_->getCurrentWindowTime() * 2);
+		Locator::getRenderEngine().drawTexture(e->getComponent<Sprite>()->texture, e->getComponent<gTransform>()->position, Eigen::Vector2f(100, 100), Locator::getIOEngine().getCurrentWindowTime() * 2);
 	}
 };
 
@@ -55,18 +64,14 @@ public:
 	void init() {
 		addRequiredComponent<Quad>();
 		addRequiredComponent<gTransform>();
-		renderEngine_ = Locator::getRenderEngine();
-		ioEngine_ = Locator::getIOEngine();
 	}
 private:
-	RenderEngine* renderEngine_;
-	IOEngine* ioEngine_;
 
 	void execute(Entity* e, const float dt) {
 		Eigen::Vector2f offset = e->getComponent<Quad>()->offset;
 		Eigen::Vector2f scale = e->getComponent<Quad>()->scale;
 		Eigen::Vector2f position = e->getComponent<gTransform>()->position;
-		renderEngine_->drawRectangle(offset + position - scale / 2, offset + position + scale / 2);
+		Locator::getRenderEngine().drawRectangle(offset + position - scale / 2, offset + position + scale / 2);
 	}
 };
 
@@ -75,18 +80,14 @@ public:
 	void init() {
 		addRequiredComponent<Circ>();
 		addRequiredComponent<gTransform>();
-		renderEngine_ = Locator::getRenderEngine();
-		ioEngine_ = Locator::getIOEngine();
 	}
 private:
-	RenderEngine* renderEngine_;
-	IOEngine* ioEngine_;
 
 	void execute(Entity* e, const float dt) {
 		Eigen::Vector2f offset = e->getComponent<Circ>()->offset;
 		float radius = e->getComponent<Circ>()->radius;
 		Eigen::Vector2f position = e->getComponent<gTransform>()->position;
-		renderEngine_->drawCircle(offset + position, radius);
+		Locator::getRenderEngine().drawCircle(offset + position, radius);
 	}
 };
 
@@ -110,13 +111,8 @@ public:
 		addRequiredComponent<gTransform>();
 		addRequiredComponent<Velocity>();
 		addRequiredComponent<CollisionShape>();
-
-		ioEngine_ = Locator::getIOEngine();
-		collisionEngine_ = Locator::getCollisionEngine();
 	}
 private:
-	IOEngine* ioEngine_;
-	CollisionEngine* collisionEngine_;
 
 	void execute(Entity* ball, const float dt) {
 		Shape* s1 = ball->getComponent<CollisionShape>()->shape;
@@ -125,7 +121,7 @@ private:
 		}
 
 		// Handle collision resolution
-		for (auto& hit : collisionEngine_->getCollisions(ball)) {
+		for (auto& hit : Locator::getCollisionEngine().getCollisions(ball)) {
 			Shape* s2 = hit->getComponent<CollisionShape>()->shape;
 			Eigen::Vector2f v = ball->getComponent<Velocity>()->velocity;
 

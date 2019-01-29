@@ -2,7 +2,6 @@
 #include "Component.h"
 #include "Entity.h"
 #include <bitset>
-#include <vector>
 
 class System {
 public:
@@ -15,7 +14,8 @@ public:
 protected:
 	virtual void execute(Entity* e, const float dt) = 0;
 
-	bool validateEntity(Entity* e) { 
+	bool validateEntity(Entity* e) {
+		// valid iff system signature subset of entity signature
 		return((e->getComponentSetSignature() & systemSignature_) == systemSignature_); 
 	}
 

@@ -32,7 +32,6 @@ private:
 	void initTextureData();
 	GLuint textureVAO_;
 	Shader* textureShader_;
-	IOEngine* ioEngine_;
 	int targetWidth_;
 	int targetHeight_;
 

@@ -3,19 +3,19 @@
 
 Game::Game(GLuint windowWidth, GLuint windowHeight) {
 	ioEngine_.init(windowWidth, windowHeight);
-	Locator::provide(&ioEngine_);
+	Locator::provide(ioEngine_);
 
 	resourceEngine_.init();
-	Locator::provide(&resourceEngine_);
+	Locator::provide(resourceEngine_);
 
 	renderEngine_.init();
-	Locator::provide(&renderEngine_);
+	Locator::provide(renderEngine_);
 
 	collisionEngine_.init();
-	Locator::provide(&collisionEngine_);
+	Locator::provide(collisionEngine_);
 
 	audioEngine_.init();
-	Locator::provide(&audioEngine_);
+	Locator::provide(audioEngine_);
 }
 
 // Shutdown sub-engines in inverse start-order.

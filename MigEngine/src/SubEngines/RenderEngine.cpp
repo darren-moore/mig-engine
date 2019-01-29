@@ -8,9 +8,8 @@
 using namespace Eigen;
 
 void RenderEngine::init() {
-	textureShader_ = Locator::getResourceEngine()->getShader("defaultSpriteShader");
-	primitiveShader_ = Locator::getResourceEngine()->getShader("defaultPrimitiveShader");
-	ioEngine_ = Locator::getIOEngine();
+	textureShader_ = Locator::getResourceEngine().getShader("defaultSpriteShader");
+	primitiveShader_ = Locator::getResourceEngine().getShader("defaultPrimitiveShader");
 	initTextureData();
 	initRectangleData();
 	initLineData();
@@ -51,7 +50,7 @@ void RenderEngine::drawTexture(Texture* texture, const Eigen::Vector2f& topLeft,
 
 	model = eScale(model, Vector3f(size.x(), size.y(), 1.0));
 
-	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)Locator::getIOEngine().getWindowWidth(), (float)Locator::getIOEngine().getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	textureShader_->setMat4("projection", projection);
 	textureShader_->setMat4("model", model);
 	textureShader_->setVec3("spriteColor", Eigen::Vector3f(1, 1, 1));
@@ -77,7 +76,7 @@ void RenderEngine::drawLine(Eigen::Vector2f a, Eigen::Vector2f b) {
 	model = eTranslate(model, Vector3f(a.x(), a.y(), 0.0f));
 	model = eScale(model, Vector3f(b.x() - a.x(), b.y() - a.y(), 1.0f));
 
-	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)Locator::getIOEngine().getWindowWidth(), (float)Locator::getIOEngine().getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	primitiveShader_->setMat4("projection", projection);
 	primitiveShader_->setMat4("model", model);
 	primitiveShader_->setVec3("inColor", Vector3f(.1f, .3f, 1));
@@ -94,7 +93,7 @@ void RenderEngine::drawRectangle(Eigen::Vector2f p1, Eigen::Vector2f p2) {
 	model = eTranslate(model, Vector3f(p1.x(), p1.y(), 0.0f));
 	model = eScale(model, Vector3f(p2.x() - p1.x(), p2.y() - p1.y(), 1.0f));
 
-	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)Locator::getIOEngine().getWindowWidth(), (float)Locator::getIOEngine().getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	primitiveShader_->setMat4("projection", projection);
 	primitiveShader_->setMat4("model", model);
 	primitiveShader_->setVec3("inColor", Eigen::Vector3f(.1f, .3f, 1));
@@ -110,7 +109,7 @@ void RenderEngine::drawCircle(Eigen::Vector2f c, float r) {
 	model = eTranslate(model, Vector3f(c.x(), c.y(), 0.0f));
 	model = eScale(model, Vector3f(r, r, 1.0f));
 
-	Matrix4f projection = eOrtho(0.0f, (float)ioEngine_->getWindowWidth(), (float)ioEngine_->getWindowHeight(), 0.0f, -1.0f, 1.0f);
+	Matrix4f projection = eOrtho(0.0f, (float)Locator::getIOEngine().getWindowWidth(), (float)Locator::getIOEngine().getWindowHeight(), 0.0f, -1.0f, 1.0f);
 	primitiveShader_->setMat4("projection", projection);
 	primitiveShader_->setMat4("model", model);
 	primitiveShader_->setVec3("inColor", Eigen::Vector3f(.1f, .3f, .1f));

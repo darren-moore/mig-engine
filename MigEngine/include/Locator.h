@@ -10,21 +10,25 @@
 class Locator {
 public:
 
-	static IOEngine* getIOEngine() { return ioEngine_; }
-	static void provide(IOEngine* ioEngine) { ioEngine_ = ioEngine; }
+	// Locator::loc<RenderEngine>().render()
+	template <typename T>
+	T* loc() { return new T; }
 
-	static RenderEngine* getRenderEngine() { return renderEngine_; }
-	static void provide(RenderEngine* renderEngine) { renderEngine_ = renderEngine; }
+	static IOEngine& getIOEngine() { return *ioEngine_; }
+	static void provide(IOEngine& ioEngine) { ioEngine_ = &ioEngine; }
 
-	static ResourceEngine* getResourceEngine() { return resourceEngine_; }
-	static void provide(ResourceEngine* resourceEngine) { resourceEngine_ = resourceEngine; }
+	static RenderEngine& getRenderEngine() { return *renderEngine_; }
+	static void provide(RenderEngine& renderEngine) { renderEngine_ = &renderEngine; }
 
-	static CollisionEngine* getCollisionEngine() { return collisionEngine_; }
-	static void provide(CollisionEngine* collisionEngine) { collisionEngine_ = collisionEngine; }
+	static ResourceEngine& getResourceEngine() { return *resourceEngine_; }
+	static void provide(ResourceEngine& resourceEngine) { resourceEngine_ = &resourceEngine; }
 
-	static AudioEngine* getAudioEngine() { return audioEngine_; }
-	static void provide(AudioEngine* audioEngine) { audioEngine_ = audioEngine; }
+	static CollisionEngine& getCollisionEngine() { return *collisionEngine_; }
+	static void provide(CollisionEngine& collisionEngine) { collisionEngine_ = &collisionEngine; }
 
+	static AudioEngine& getAudioEngine() { return *audioEngine_; }
+	static void provide(AudioEngine& audioEngine) { audioEngine_ = &audioEngine; }
+	
 private:
 	static IOEngine* ioEngine_;
 	static RenderEngine* renderEngine_;
