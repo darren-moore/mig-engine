@@ -5,9 +5,14 @@
 #include <Eigen/Core>
 
 struct Player : public Component {
-	Player(std::string upKey, std::string downKey, float speed) :
-		upKey(upKey), downKey(downKey), speed(speed) {};
-	std::string upKey, downKey;
+	Player(std::string up, std::string down, std::string left, std::string right, std::string shoot, float speed) :
+		up(up),
+		down(down),
+		left(left),
+		right(right),
+		shoot(shoot),
+		speed(speed) {};
+	std::string up, down, left, right, shoot;
 	float speed;
 };
 
